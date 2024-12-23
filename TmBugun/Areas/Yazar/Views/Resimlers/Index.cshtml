@@ -1,0 +1,32 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using TmBugun.Models
+@model IPagedList<Resimler>
+
+@if (Session["YazarID"] == null)
+{
+    Response.Redirect("~/Yazar/KayitIslemleri/Login");
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Yazar/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">image</i>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <h4 class="card-title left">Resim Haberleri</h4>
+            </div>
+            <a class="col-md-3 col-sm-3 btn btn-success ml-auto" href="~/Yazar/Resimlers/Create">Resim Ekle</a>
+        </div>
+    </div>
+</div>
+
+<div id="dvResimListesi">
+    @Html.Partial("~/Areas/Yazar/Views/Resimlers/ResimListesi.cshtml", Model)
+</div>

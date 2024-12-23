@@ -1,0 +1,83 @@
+﻿@model IEnumerable<TmBugun.Models.Sport>
+
+@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int i = 1;
+
+}
+
+<div class="card">
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">extension</i>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <h4 class="card-title left">Sport Haberleri</h4>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th>Sport Haber Kategorisi</th>
+                        <th>Yayimci Adi</th>
+                        <th>Sport Basligi</th>
+                        <th>Sport Eklenme Tarihi</th>
+                        <th>Begeni Sayi</th>
+                        <th>Izlenme Sayi</th>
+                        <th class="text-right">Islemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@i</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SportKategorileri.SportKategori)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Yayimci.Yayimci_ad)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SportBaslik)
+                            </td>
+                            <td>
+                                @Html.Raw(item.SportTarih.Date.ToString("dd MMM yyyy"))
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SportBegenmeSayi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SportIzlenmeSayi)
+                            </td>
+                            <td class="td-actions text-right">
+                                <button type="button" rel="tooltip" title="Haber Detayi" class="btn btn-info btn-round" onclick="location.href='@Url.Action("Details", "Sports", new { id = item.Id })'">
+                                    <i class="material-icons">view_headline</i>
+                                </button>
+                                <button type="button" rel="tooltip" title="Haberi Siliniz" class="btn btn-danger btn-round" onclick="location.href='@Url.Action("Delete", "Sports", new { id = item.Id })'">
+                                    <i class="material-icons">close</i>
+                                </button>
+
+                            </td>
+                            @{
+                                i++;
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

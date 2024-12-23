@@ -1,0 +1,38 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using TmBugun.Models
+@model IPagedList<Haber>
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row" style="margin-top:5%">
+        @foreach (var item in Model)
+        {
+            <div class=" col-12 col-lg-3 col-md-4 col-sm-6" style="padding:10px;">
+                <div class="card" style="padding:0;margin:0;">
+                    @Html.Raw("<img class='card-img-top' style='width:100%;height:200px;' src=\"data:image/jpeg;base64,"
+                                                               + Convert.ToBase64String(item.HaberResim) + "\"  />")
+                    <div class="card-body" style="padding:10px;">
+                        <h5 class="card-title">
+                            | @Html.Raw(item.HaberKategorileri.HaberKategori)
+                        </h5>
+                        <p class="card-text">
+                            @Html.Raw(item.HaberBaslik)
+                        </p>
+                        <p class="card-text"><small class="text-muted">@Html.Raw(item.HaberTarih.Date.ToString("dd MMM yyyy"))</small></p>
+                        <div class="text-right">
+                            <div type="button" class="btn btn-outline-red waves-effect " style="padding:2px;background-color:red">
+                                <a href="/Haberlers/HaberDetay/@item.Id"><p style="font-size:10px;padding:8px;margin:0;color:black;font-weight:bold">Devamini Oku</p></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="text-center">
+        @Html.PagedListPager(Model, _sayfaNo => Url.Action("TumHaberler", "Haberlers", new { SayfaNo = _sayfaNo }), new PagedListRenderOptions { LinkToFirstPageFormat = "<< İlk", LinkToPreviousPageFormat = "< Önceki", LinkToNextPageFormat = "Sonraki >", LinkToLastPageFormat = "Son >>" }@*,PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "dvHaberListesi" })*@)
+    </div>
+
+</div>

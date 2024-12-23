@@ -1,0 +1,67 @@
+﻿@model TmBugun.Models.HaberKategorileri
+@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card ">
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">all_inbox</i>
+        </div>
+        <h4 class="card-title">Kategori Ekle</h4>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <p class="h4 font-weight-bold">Altaki Ikonlardan Birini Seciniz ve Asaga Yaziniz</p>
+            <div class="iframe-container d-none d-lg-block" style="margin-top:20px;margin-bottom:20px;">
+                <iframe src="https://design.google.com/icons/">
+                </iframe>
+            </div>
+            <div class="form-group">
+                <label for="examplePass" class="bmd-label-floating">Kategori Logosu</label>
+                @Html.EditorFor(model => model.HaberKategoriLogo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HaberKategoriLogo, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="exampleEmail" class="bmd-label-floating"> Kategori Adi</label>
+                @Html.EditorFor(model => model.HaberKategori, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HaberKategori, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="exampleEmail" class="bmd-label-floating"> Kategori Adi EN</label>
+                @Html.EditorFor(model => model.HaberKategoriEN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HaberKategoriEN, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="exampleEmail" class="bmd-label-floating"> Kategori Adi RU</label>
+                @Html.EditorFor(model => model.HaberKategoriRU, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HaberKategoriRU, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="exampleEmail" class="bmd-label-floating"> Kategori Adi TR</label>
+                @Html.EditorFor(model => model.HaberKategoriTR, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HaberKategoriTR, "", new { @class = "text-danger" })
+            </div>
+            <div class="card-footer ">
+                <button type="submit" class="btn btn-fill btn-rose">Kategori Ekle</button>
+                <button type="button" class="btn btn-fill btn-rose" onclick="location.href='@Url.Action("Index", "HaberKategorileris")'">Geri Don</button>
+
+            </div>
+        }
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

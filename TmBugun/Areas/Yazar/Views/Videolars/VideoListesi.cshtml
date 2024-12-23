@@ -1,0 +1,55 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using TmBugun.Models
+@model IPagedList<Videolar>
+
+@if (Session["YazarID"] == null)
+{
+    Response.Redirect("~/Yazar/KayitIslemleri/Login");
+}
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="card card-product">
+                <div class="card-header card-header-image" data-header-animation="true">
+                    <a href="#pablo">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@item.VideoYol" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-actions text-center">
+                        <button type="button" class="btn btn-danger btn-link fix-broken-card">
+                            <i class="material-icons">build</i> video Onar!
+                        </button>
+                        <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Guncelle" onclick="location.href='@Url.Action("Edit", "Videolars",new {id=item.Id})'">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom" title="Sil" onclick="location.href='@Url.Action("Delete", "Videolars",new {id=item.Id})'">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </div>
+                    <h4 class="card-title">
+                        <h5 class="text-left">
+                            @Html.Raw(item.VideoBasligi)
+                        </h5>
+                    </h4>
+
+                </div>
+                <div class="card-footer">
+                    <div class="price">
+                        <h4>
+                            @Html.Raw(item.VideoEklenmeTarih.Date.ToString("dd MMM yyyy"))
+                        </h4>
+                    </div>
+                    <div class="stats">
+                        <span class="card-category"><i class="material-icons">thumb_up</i>@Html.Raw(item.VideoBegeniSayi)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Videolars", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "dvVideoListesi" }))

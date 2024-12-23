@@ -1,0 +1,527 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+<script src="~/Scripts/hls.min.js"></script>
+
+
+    <div style="background-color:#340db9">
+
+        <div class="container gizle" style="color:white;padding-left:10%;">
+            <a href="~/CanliYayin/Index" style="margin:5px;font-size:25px;font-weight:bold;color:white;">Kanallar</a>
+            <ul class="list-group list-group-horizontal" style="background-color:rgba(0, 0, 0, 0.00);border:0;">
+                <li class="list-group-item" style="padding:2px;background-color:rgba(0, 0, 0, 0.00);border:0;">
+                    <a href="#" onclick="Altynasyr()" id='one' style="color:black">
+                        <div type="button" class="btn btn-outline-red waves-effect kategoributonlari" style="padding:2px;background-color:red">
+                            <p style="font-size:10px;padding:8px;margin:0;color:white;">
+                                Altyn Asyr <i class="amp-video-eq"></i>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item" style="padding:2px;background-color:rgba(0, 0, 0, 0.00);border:0;">
+                    <a href="#" id="two" onclick="Yaslyk()" style="color:black">
+                        <div type="button" class="btn btn-outline-red waves-effect kategoributonlari" style="padding:2px;background-color:red">
+                            <p style="font-size:10px;padding:8px;margin:0;color:white;">
+                                Yaşlyk <i class="amp-video-eq"></i>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item" style="padding:2px;background-color:rgba(0, 0, 0, 0.00);border:0;">
+                    <a href="#" id="third" onclick="Miras()" style="color:black">
+                        <div type="button" class="btn btn-outline-red waves-effect kategoributonlari" style="padding:2px;background-color:red">
+                            <p style="font-size:10px;padding:8px;margin:0;color:white;">
+                                Miras <i class="amp-video-eq"></i>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item" style="padding:2px;background-color:rgba(0, 0, 0, 0.00);border:0;">
+                    <a href="#" id="four" onclick="Sport()" style="color:black">
+                        <div type="button" class="btn btn-outline-red waves-effect kategoributonlari" style="padding:2px;background-color:red">
+                            <p style="font-size:10px;padding:8px;margin:0;color:white;">
+                                Türkmen Sport <i class="amp-video-eq"></i>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item" style="padding:2px;background-color:rgba(0, 0, 0, 0.00);border:0;">
+                    <a href="#" id="five" onclick="Owaz()" style="color:black">
+                        <div type="button" class="btn btn-outline-red waves-effect kategoributonlari" style="padding:2px;background-color:red">
+                            <p style="font-size:10px;padding:8px;margin:0;color:white;">
+                                Türkmen Owazy  <i class="amp-video-eq"></i>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item" style="padding:2px;background-color:rgba(0, 0, 0, 0.00);border:0;">
+                    <a href="#" id="six" onclick="Ashgabat()" style="color:black">
+                        <div type="button" class="btn btn-outline-red waves-effect kategoributonlari" style="padding:2px;background-color:red">
+                            <p style="font-size:10px;padding:8px;margin:0;color:white;">
+                                Aşgabat <i class="amp-video-eq"></i>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+                <li class="list-group-item" style="padding:2px;background-color:rgba(0, 0, 0, 0.00);border:0;">
+                    <a href="#" id="seven" onclick="Turkmenistan()" style="color:black">
+                        <div type="button" class="btn btn-outline-red waves-effect kategoributonlari" style="padding:2px;background-color:red">
+                            <p style="font-size:10px;padding:8px;margin:0;color:white;">
+                                Türkmenistan <i class="amp-video-eq"></i>
+                            </p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="goster">
+            <a href="~/CanliYayin/Index" style="margin-left:-10px;margin-bottom:20px;color:white;font-size:25px;font-weight:bold;">Kanallar</a>
+            <div class="navigation-wrapper" style="margin:0;">
+                <div class="navigation-button" style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(52, 13, 185));" disabled>
+                    <h5 class="gizlegosterKa" style="margin:10px 0 10px 10px;color:white;">Kanallar  <i class="fa fa-bars"></i></h5>
+                </div>
+                <div class="navigation-menu" style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(52, 13, 185));">
+                    <ul>
+                        <li>
+                            <a href="#" onclick="Altynasyr()" id='one'>
+                                Altyn Asyr <i class="amp-video-eq"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="two" onclick="Yaslyk()">Yaşlyk <i class="amp-video-eq"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="#" id="third" onclick="Miras()">Miras <i class="amp-video-eq"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="#" id="four" onclick="Sport()">Türkmen Sport <i class="amp-video-eq"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="#" id="five" onclick="Owaz()">Türkmen Owazy <i class="amp-video-eq"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="#" id="six" onclick="Ashgabat()">Aşgabat <i class="amp-video-eq"></i></a>
+
+                        </li>
+                        <li>
+                            <a href="#" id="seven" onclick="Turkmenistan()">Türkmenistan <i class="amp-video-eq"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container" style="padding:6%">
+        <div class="box box-two">
+            <div class="player-wrapper">
+                <div>
+                    <video id="webtv-video" width="100%" height="100%" controls>Loading...</video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top:50px;">
+        <h4><a style="color:red;font-weight:bold;margin-bottom:15px">|</a> Bizi Buralarda Bulabilirsiniz</h4>
+        <div class="row">
+            @Html.Action("IletisimBilgileri", "Home", new { area = "" })
+        </div>
+    </div>
+
+    <footer class="page-footer font-small" style="background-color:#4c4c4c">
+
+        <!-- Footer Links -->
+        <div class="container text-md-left" style="padding:0;">
+            <h4 class="text-left" style="padding:20px 0 20px 0;font-family: 'Noto Serif', serif;">TMB ile Kesfet</h4>
+            <!-- Grid row -->
+            <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                    <!-- Links -->
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="nav-link">Ana Sayfa</a>
+                        </li>
+                        <li>
+                            <a class="nav-link active" href="/haberlers/AnaSayfa">Haberler</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#!">Sportlar</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#!">Kultur</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                    <!-- Links -->
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="nav-link " href="#!">Yemek</a>
+                        </li>
+                        <li>
+                            <a class="nav-link " href="#!">Canli Yayin</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#!">Diger</a>
+                        </li>
+                        <li>
+                            <a class="nav-link " href="#!">Finans</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                    <!-- Links -->
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                    <!-- Links -->
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+        <div class="container" style="padding:20px 0 20px 0">
+
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <h6>Kullanım Şartları</h6>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <a href="/Yazar/KayitIslemleri/Login">Yazar Girisi</a>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <h6>TMB Hakkinda</h6>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <h6>Gizlilik Politikası</h6>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <h6>TMB ile iletişim kurun</h6>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <h6>Cookies</h6>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+
+        </div>
+        <!-- Footer Elements -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2018 Copyright:
+            <a href="#"> MaksatMyrat</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script>
+
+    $(".list-group-item").click(function () {
+        var equalizer = $('<div class="-amp-video-eq-col"><div class="-amp-video-eq-1-1"></div><div class="-amp-video-eq-1-2"></div></div><div class="-amp-video-eq-col"><div class="-amp-video-eq-2-1"></div><div class="-amp-video-eq-2-2"></div></div><div class="-amp-video-eq-col"><div class="-amp-video-eq-3-1"></div><div class="-amp-video-eq-3-2"></div></div><div class="-amp-video-eq-col"><div class="-amp-video-eq-4-1"></div><div class="-amp-video-eq-4-2"></div></div>')
+        $(".list-group-item").removeClass("active");
+        $('.amp-video-eq').empty();
+        $(this).addClass("active");
+        $('.amp-video-eq', this).append(equalizer);
+    });
+
+
+    $(function () {
+
+        var video_source = 'https://alpha.tv.online.tm/legacyhls/ch001.m3u8';
+        if (location.protocol == 'https:') {
+            video_source = 'https://alpha.tv.online.tm/hls/ch001.m3u8';
+        }
+        var video = document.getElementById('webtv-video');
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(video_source);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                video.play();
+            });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = video_source;
+            video.addEventListener('canplay', function () {
+                video.play();
+            });
+        }
+        plyr.setup(video);
+    });
+
+    function Altynasyr() {
+        $(function () {
+
+            var video_source = 'http://alpha.tv.online.tm/hls/ch001.m3u8';
+            if (location.protocol == 'https:') {
+                video_source = 'https://alpha.tv.online.tm/hls/ch001.m3u8';
+            }
+            var video = document.getElementById('webtv-video');
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(video_source);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = video_source;
+                video.addEventListener('canplay', function () {
+                    video.play();
+                });
+            }
+        });
+    };
+
+    function Yaslyk() {
+        $(function () {
+
+            var video_source = 'http://alpha.tv.online.tm/hls/ch002.m3u8';
+            if (location.protocol == 'https:') {
+                video_source = 'https://alpha.tv.online.tm/hls/ch002.m3u8';
+            }
+            var video = document.getElementById('webtv-video');
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(video_source);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = video_source;
+                video.addEventListener('canplay', function () {
+                    video.play();
+                });
+            }
+        });
+    };
+
+
+
+
+    function Miras() {
+        $(function () {
+
+            var video_source = 'http://alpha.tv.online.tm/hls/ch003.m3u8';
+            if (location.protocol == 'https:') {
+                video_source = 'https://alpha.tv.online.tm/hls/ch003.m3u8';
+            }
+            var video = document.getElementById('webtv-video');
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(video_source);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = video_source;
+                video.addEventListener('canplay', function () {
+                    video.play();
+                });
+            }
+        });
+    };
+
+    function Sport() {
+        $(function () {
+
+            var video_source = 'http://alpha.tv.online.tm/hls/ch004.m3u8';
+            if (location.protocol == 'https:') {
+                video_source = 'https://alpha.tv.online.tm/hls/ch004.m3u8';
+            }
+            var video = document.getElementById('webtv-video');
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(video_source);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = video_source;
+                video.addEventListener('canplay', function () {
+                    video.play();
+                });
+            }
+        });
+    };
+
+    function Owaz() {
+        $(function () {
+
+            var video_source = 'http://alpha.tv.online.tm/hls/ch005.m3u8';
+            if (location.protocol == 'https:') {
+                video_source = 'https://alpha.tv.online.tm/hls/ch005.m3u8';
+            }
+            var video = document.getElementById('webtv-video');
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(video_source);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = video_source;
+                video.addEventListener('canplay', function () {
+                    video.play();
+                });
+            }
+        });
+    };
+
+    function Ashgabat() {
+        $(function () {
+
+            var video_source = 'http://alpha.tv.online.tm/hls/ch006.m3u8';
+            if (location.protocol == 'https:') {
+                video_source = 'https://alpha.tv.online.tm/hls/ch006.m3u8';
+            }
+            var video = document.getElementById('webtv-video');
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(video_source);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = video_source;
+                video.addEventListener('canplay', function () {
+                    video.play();
+                });
+            }
+        });
+    };
+
+    function Turkmenistan() {
+        $(function () {
+
+            var video_source = 'http://alpha.tv.online.tm/hls/ch007.m3u8';
+
+            if (location.protocol == 'https:') {
+                video_source = 'https://alpha.tv.online.tm/hls/ch007.m3u8';
+            }
+            var video = document.getElementById('webtv-video');
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(video_source);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = video_source;
+                video.addEventListener('canplay', function () {
+                    video.play();
+                });
+            }
+        });
+    };
+</script>
+<script type="text/javascript">
+    var kanal = $('#kanal_num').val();
+    switch (kanal) {
+        case '1':
+            $("#one").trigger("click");
+            break;
+        case '2':
+            $("#two").trigger("click");
+            break;
+        case '3':
+            $("#third").trigger("click");
+            break;
+        case '4':
+            $("#four").trigger("click");
+            break;
+        case '5':
+            $("#five").trigger("click");
+            break;
+        case '6':
+            $("#six").trigger("click");
+            break;
+        case '7':
+            $("#seven").trigger("click");
+            break;
+    }
+
+</script>
+

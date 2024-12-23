@@ -1,0 +1,89 @@
+﻿@model IEnumerable<TmBugun.Models.IletisimBilgileri>
+
+@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">info</i>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <h4 class="card-title left">Iletisim Bilgiler</h4>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Facebook </th>
+                        <th>Twitter</th>
+                        <th>Eposta</th>
+                        <th>Adres</th>
+                        <th>Islemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Facebook)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Twitter)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Eposta)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Adres)
+                            </th>
+                            <td class="td-actions text-right">
+                                <button type="button" rel="tooltip" title="Duzenle" class="btn btn-success btn-round" onclick="location.href='@Url.Action("Edit", "IletisimBilgileris", new { id = item.Id })'">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <thead>
+            </table>
+            
+            <header class="col-sm-12 font-weight-bold">Hakkimizda</header>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    @foreach (var item1 in Model)
+                    {
+                        <h5>Hakkimizda TM</h5>
+                        @Html.Raw(item1.Hakkimizda)
+                        <br />
+                        <h5>Hakkimizda EN</h5>
+                        @Html.Raw(item1.HakkimizdaEN)
+                        <br />
+                        <h5>Hakkimizda RU</h5>
+                        @Html.Raw(item1.HakkimizdaRU)
+                        <br />
+                        <h5>Hakkimizda TR</h5>
+                        @Html.Raw(item1.HakkimizdaTR)
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

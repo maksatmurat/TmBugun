@@ -1,0 +1,368 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div class="row text-wrap" style="background-color:#353441;margin:0;margin-bottom:20px;">
+        <div class="col-12 col-lg-6 col-md-6 col-sm-12 offset-lg-1 offset-md-1 sagal">
+            <p class="h2-responsive baslikboyut" style="position:relative;margin:2px 0 4px 0;color:#d5d5d5;">Türkmenistan Bu Güne Hoş Geldiniz</p>
+        </div>
+        @if (Session["NormalID"] != null)
+        {
+            <div class="col-12 col-lg-3 col-md-3 offset-lg-2 offset-md-2 gizle">
+                <div class="btn-group" style="padding-top:15px;">
+                    <h4 style="color:white"><a href="/NormalKullanici/HesapBilgisi/@Session["NormalID"]" style="color:white;">@Session["NormalEmail"]</a></h4>
+                </div>
+            </div>
+         }
+        else{
+            <div class="col-12 col-lg-1 col-md-1 offset-lg-3 offset-md-3 gizle" style="padding:0;padding-top:15px;">
+                <a class="nav-link h5-responsive" href="/Login/Login" style="color:white;position:relative;margin:2px 0 4px 0;padding:0;"><i class="fas fa-user-circle"> Giris</i></a>
+            </div>
+        }
+            @*<div class="col-md-3" style="">
+                @Html.Action("Search", "Home", new { area = "" })
+            </div>*@
+        </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-12 " style="padding:5px;margin-bottom:5px;">
+            @Html.Action("AnaSayfaSec1", "Home", new { area = "" })
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+            @Html.Action("AnaSayfaSec1IkinciKisim", "Home", new { area = "" })
+        </div>
+    </div>
+</div>
+<div class="container" style="padding:0;">
+    <h4 style="margin:25px 0 20px 0;font-weight:bold"><a style="color:red;">|</a> Habarlar</h4>
+</div>
+
+<div class="container">
+    <div class="card-deck">
+        @Html.Action("AnaSayfaSec2", "Home", new { area = "" })
+    </div>
+</div>
+
+<div class="row" style="margin:300px 0 300px 0">
+    <section id="second">
+        <div class="caption">
+            <br />
+            <img src="~/content/img/Tm_icon.png" style="height:70px;width:140px;" /><a class="white-text align-text-top" style="font-size:medium;font-weight:bolder;color:white;background-color:rgba(0, 0, 0, 0.61)">TÜRKMENİSTAN BU GÜN</a>
+        </div>
+    </section>
+</div>
+
+<div class="container" style="padding:0;">
+    <h4 style="margin:35px 0 20px 0;font-weight:bold"><a style="color:blue;">|</a> Sportlar</h4>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <!-- Card deck -->
+            <div class="card-deck">
+                @Html.Action("AnaSayfaSec3", "Home", new { area = "" })
+            </div>
+            <!-- Card deck -->
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin:300px 0 300px 0">
+    <section id="second">
+        <div class="caption">
+            <br />
+            <img src="~/content/img/Tm_icon.png" style="height:70px;width:140px;" /><a class="white-text align-text-top" style="font-size:medium;font-weight:bolder;color:white;background-color:rgba(0, 0, 0, 0.61)">TÜRKMENİSTAN BU GÜN</a>
+        </div>
+    </section>
+</div>
+<div class="container">
+    <h4><a style="color:yellowgreen;font-weight:bold;margin:10px 0 10px 0;">|</a> Howa Durum</h4>
+    @Html.Action("HowaDurum", "Home", new { area = "" })
+
+</div>
+<div class="row" style="margin:300px 0 300px 0">
+    <section id="second">
+        <div class="caption">
+            <br />
+            <img src="~/content/img/Tm_icon.png" style="height:70px;width:140px;" /><a class="white-text align-text-top" style="font-size:medium;font-weight:bolder;color:white;background-color:rgba(0, 0, 0, 0.61)">TÜRKMENİSTAN BU GÜN</a>
+        </div>
+    </section>
+</div>
+
+<div class="container" style="padding:0;">
+    <h4 style="margin:35px 0 20px 0;font-weight:bold"><a style="color:red;">|</a> One cikan videolar</h4>
+</div>
+<div class="container">
+    <div class="row" style="margin:0;">
+        @Html.Action("AnaSayfa6", "Videos", new { area = "" })
+    </div>
+</div>
+
+<div class="row" style="margin:300px 0 300px 0">
+    <section id="second">
+        <div class="caption">
+            <br />
+            <img src="~/content/img/Tm_icon.png" style="height:70px;width:140px;" /><a class="white-text align-text-top" style="font-size:medium;font-weight:bolder;color:white;background-color:rgba(0, 0, 0, 0.61)">TÜRKMENİSTAN BU GÜN</a>
+        </div>
+    </section>
+</div>
+
+<div class="container" style="padding:0;">
+    <h4 style="margin:35px 0 20px 0;font-weight:bold"><a style="color:red;">|</a> Turkmenistan Resimlerde</h4>
+</div>
+<div class="container">
+    <div class="row">
+        @Html.Action("AnaSayfa4", "Resims", new { area = "" })
+    </div>
+</div>
+
+<footer class="page-footer font-small" style="background-color:#4c4c4c">
+
+    <!-- Footer Links -->
+    <div class="container text-md-left" style="padding:0;">
+        <h4 class="text-left" style="padding:20px 0 20px 0;font-family: 'Noto Serif', serif;">TMB ile Kesfet</h4>
+        <!-- Grid row -->
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                <!-- Links -->
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a class="nav-link">Ana Sayfa</a>
+                    </li>
+                    <li>
+                        <a class="nav-link active" href="/haberlers/AnaSayfa">Haberler</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#!">Sportlar</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#!">Kultur</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                <!-- Links -->
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a class="nav-link " href="#!">Yemek</a>
+                    </li>
+                    <li>
+                        <a class="nav-link " href="#!">Canli Yayin</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#!">Diger</a>
+                    </li>
+                    <li>
+                        <a class="nav-link " href="#!">Finans</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                <!-- Links -->
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                <!-- Links -->
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+    <div class="container" style="padding:20px 0 20px 0">
+
+        <!--Grid row-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <h6>Kullanım Şartları</h6>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <a href="/Yazar/KayitIslemleri/Login">Yazar Girisi</a>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <h6>TMB Hakkinda</h6>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <h6>Gizlilik Politikası</h6>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <h6>TMB ile iletişim kurun</h6>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <h6>Cookies</h6>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+
+    </div>
+    <!-- Footer Elements -->
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+        © 2018 Copyright:
+        <a href="#"> MaksatMyrat</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+
+<script>
+    $(document).ready(function () {
+        $('#intro').parallax("50%", 0.1)
+    });
+</script>
+<style>
+    @@media only screen and (max-width:767px) {
+
+        div.sagal {
+            text-align:right;
+        }
+    }   
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+    /*.dropdown {
+                  float: left;
+                  overflow: hidden;
+                }
+
+                .dropdown .dropbtn {
+                  font-size: 16px;
+                  border: none;
+                  outline: none;
+                  color: white;
+                  padding: 14px 16px;
+                  background-color: inherit;
+                  font-family: inherit;
+                  margin: 0;
+                }
+                    .navbar a:hover, .dropdown:hover .dropbtn {
+                  background-color: red;
+                }
+
+                .dropdown-content {
+                  display: none;
+                  position: absolute;
+                  background-color: #f9f9f9;
+                  min-width: 160px;
+                  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                  z-index: 1;
+                }
+
+                .dropdown-content a {
+                  float: none;
+                  color: black;
+                  padding: 12px 16px;
+                  text-decoration: none;
+                  display: block;
+                  text-align: left;
+                }
+
+                .dropdown-content a:hover {
+                  background-color: #ddd;
+                }
+
+                .dropdown:hover .dropdown-content {
+                  display: block;
+                }*/
+
+</style>

@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TmBugun.Models.Haber>
+
+<div class="row">
+    @foreach(var item in  Model)
+    {
+    <div class="col-12 col-lg-2 col-md-2 col-sm-2">
+        <div class="text-black" style="margin:5px;">
+            <div class="text-body font-small">
+                <p style="font-weight:bold;margin:5px;font-size:14px">
+                    <a href="~/Haberlers/HaberDetay/@item.Id" style="color:black">
+                        @Html.Raw(item.HaberBaslik.ToString().Substring(0, (item.HaberBaslik.Length > 50) ? 50 : item.HaberBaslik.Length))
+                    </a>
+                </p>
+            </div>
+            <div class="page-footer" style="font-size:14px;">
+                @Html.Raw(item.HaberTarih.TimeOfDay.Hours):@Html.Raw(item.HaberTarih.TimeOfDay.Minutes)
+                |
+                @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+            </div>
+        </div>
+    </div>
+    }
+</div>

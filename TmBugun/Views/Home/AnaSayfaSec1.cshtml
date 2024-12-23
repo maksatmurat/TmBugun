@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TmBugun.Models.Haber>
+
+@foreach (var item in Model)
+{
+    var base64 = Convert.ToBase64String(item.HaberResim);
+    string imgsrc = String.Format("data:image/jpeg;base64,{0}", base64);
+<div style="margin-bottom:20px;">
+    <a href="/Haberlers/HaberDetay/@item.Id" style="color:white">
+
+        <div class="card card-image view overlay img-fluid" style="background-image:url(@imgsrc);">
+            <div class="mask waves-effect waves-light rgba-white-slight"></div>
+            <!-- Content -->
+            <div class="text-white text-md-left d-flex align-items-start resimUzeriYazi" style="padding:15px;padding-top:20%">
+                <div>
+                    <h3 class="card-title pt-2" style="font-size:16px;">
+                        <strong>@Html.Raw(item.HaberBaslik)</strong>
+                    </h3>
+                    <p style="font-size:14px;">
+                        @Html.Raw(item.HaberIcerik.ToString().Substring(0, (item.HaberIcerik.Length > 100) ? 100 : item.HaberIcerik.Length))
+                    </p>
+                    <h6 class="white-text">
+                        | @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+}

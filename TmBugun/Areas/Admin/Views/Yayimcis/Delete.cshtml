@@ -1,0 +1,89 @@
+﻿@model TmBugun.Models.Yayimci
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Yayimci</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Yayimci_ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yayimci_ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yayimci_soyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yayimci_soyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yayimci_eposta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yayimci_eposta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yayimci_sifre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yayimci_sifre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YayimciResim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayimciResim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YayimciYas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayimciYas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YayimciFacebook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayimciFacebook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YayimciTwitter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayimciTwitter)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

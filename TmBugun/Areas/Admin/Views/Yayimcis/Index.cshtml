@@ -1,0 +1,96 @@
+﻿@model IEnumerable<TmBugun.Models.Yayimci>
+
+
+@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int habersayi = 0;
+    int sportsayi = 0;
+}
+
+
+   
+    <div class="card">
+        <div class="card-header card-header-rose card-header-icon">
+            <div class="card-icon">
+                <i class="material-icons">supervised_user_circle</i>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-3">
+                    <h4 class="card-title left">Yazarlar</h4>
+                </div>
+                <div class="col-md-3 col-sm-3 ml-auto">
+                    <button type="button" rel="tooltip" title="Yazar Ekle" class="btn btn-info" style="float:right;" onclick="location.href='@Url.Action("Create", "Yayimcis")'">
+                        <i class="material-icons">add</i>
+                    </button>
+                </div>
+            </div>
+       </div>
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <div>
+                            @if(item.YayimciResim != null)
+                            {
+                                @Html.Raw("<img style='width:100%; height:100%;' src=\"data:image/jpeg;base64,"
+                                 + Convert.ToBase64String(item.YayimciResim) + "\" />")
+                            }
+                            else if (item.YayimciResim == null)
+                            {
+                            <img class="img" src="~/Areas/assets/img/faces/writingclub.png" />
+                            }
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-category text-gray">
+                            @Html.DisplayFor(modelItem => item.YayimciYas) Yas
+                            /
+                            @Html.DisplayFor(modelItem => item.Yayimci_eposta)
+                        </h6>
+                        <h4 class="card-title">
+                            @Html.DisplayFor(modelItem => item.Yayimci_ad)
+                            @Html.DisplayFor(modelItem => item.Yayimci_soyad)
+                        </h4>
+                        <p class="card-description">
+                            @{
+                                sportsayi = item.Sport.Where(x => x.YayimciId == item.Id).Count();
+                                habersayi = item.Haber.Where(x => x.YayimciId == item.Id).Count();
+                                if (habersayi != 0)
+                                {
+                                    Html.RenderAction("son2haber", new { id = item.Id });
+                                }
+                                else if (sportsayi != 0)
+                                {
+                                    Html.RenderAction("son2Sport", new { id = item.Id });
+                                }
+                                else
+                                {
+                                    <span style="color:black;"> Bu yazar haber eklemedi</span>
+                                }
+                            }
+                        </p>
+                        <a href="~/Admin/Yayimcis/Details/@item.Id" class="btn btn-rose btn-round">Detay</a>
+                       
+                        <button type="button" rel="tooltip" title="Yazari Siliniz" class="btn btn-danger btn-round" onclick="location.href='@Url.Action("Delete", "Yayimcis", new { id = item.Id })'">
+                            <i class="material-icons">close</i>
+                        </button>
+                     
+                        <button type="button" rel="tooltip" title="Duzenle" class="btn btn-success btn-round" onclick="location.href='@Url.Action("Edit", "Yayimcis", new { id = item.Id })'">
+                            <i class="material-icons">edit</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>
+

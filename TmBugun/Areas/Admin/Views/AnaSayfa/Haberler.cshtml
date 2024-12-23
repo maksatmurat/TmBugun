@@ -1,0 +1,28 @@
+﻿@model IEnumerable<TmBugun.Models.Haber>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 cards">
+            <div class="card card-pricing card-raised">
+                <div class="card-body">
+                    <h6 class="card-category">
+                        @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+                    </h6>
+                    <div class="card-icon icon-rose">    
+                        @if (item.HaberResim != null)
+                        {
+                            @Html.Raw("<img style='width:100%; height:100%;border-radius:15%' src=\"data:image/jpeg;base64,"
+                             + Convert.ToBase64String(item.HaberResim) + "\" />")
+                        }
+                    </div>
+                    <p class="card-description">
+                        @Html.DisplayFor(modelItem => item.HaberBaslik)
+                    </p>
+                    <a href="~/Admin/Habers/Details/@item.Id" class="btn btn-rose btn-round">Devamini Oku</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

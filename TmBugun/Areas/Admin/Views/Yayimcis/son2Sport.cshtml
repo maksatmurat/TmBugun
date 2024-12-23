@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TmBugun.Models.Sport>
+
+@{
+    int i = 0;
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="font-weight-bold">Son eklenen 2 Sport Haber Basligi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="~/Admin/Sport/Details/@item.Id" style="color:black"> @Html.DisplayFor(modelItem => item.SportBaslik)</a>
+                </td>
+            </tr>
+
+            i++;
+        }
+    </tbody>
+</table>
+@if (i == 0)
+{
+    <span> Bu yazar daha Sport haber eklemedi</span>
+}

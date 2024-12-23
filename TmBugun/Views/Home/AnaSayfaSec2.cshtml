@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TmBugun.Models.Haber>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+                <div class="col-md-4" style="padding:10px;margin:0;">
+
+
+                    <div class="card">
+
+                            <!--Card image-->
+                            <div class="view overlay">
+                                @Html.Raw("<img style='width:100%; height:200px;' src=\"data:image/jpeg;base64,"
+                                + Convert.ToBase64String(item.HaberResim) + "\" />")
+                                <a href="~/Haberlers/HaberDetay/@item.Id">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <a href="~/Haberlers/HaberDetay/@item.Id">
+                                    <h4 class="card-title" style="color:black;font-size:14px;font-weight:bold;">
+                                        @Html.Raw(item.HaberBaslik.ToString().Substring(0, (item.HaberBaslik.Length > 150) ? 150 : item.HaberBaslik.Length))
+                                    </h4>
+                                </a>
+                                <!--Text-->
+                                <p class="card-text" style="font-size:14px;">
+                                    @*@Html.Raw(item.HaberIcerik.ToString().Substring(0, (item.HaberIcerik.Length > 100) ? 100 : item.HaberIcerik.Length))*@
+                                </p>
+                                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                                <a href="~/Haberlers/KategoriHaber/@item.HaberkategoriId">
+                                    <h5 style="color:#f85050;font-weight:bold">
+                                        | @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+                                    </h5>
+                                </a>
+                            </div>
+                    </div>
+                </div>
+        }
+    </div>
+

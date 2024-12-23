@@ -1,0 +1,25 @@
+﻿@model IEnumerable<TmBugun.Models.Haber>
+
+
+@foreach (var item in Model)
+{
+    <div class="card card-cascade" style="margin-bottom:20px;">
+        <a href="~/Haberlers/HaberDetay/@item.Id" style="color:black">
+            <!-- Card image -->
+            <div class="view view-cascade overlay">
+                @Html.Raw("<img style='width:100%; height:120px;' src=\"data:image/jpeg;base64,"
+                    + Convert.ToBase64String(item.HaberResim) + "\" />")
+            </div>
+            <!-- Card content -->
+            <div class="card-body card-body-cascade text-left">
+                <!-- Title -->
+                <!-- Subtitle -->
+                <h6 class="font-weight-bold indigo-text py-2 text-left" style="font-size:14px;">
+                    @Html.Raw(item.HaberBaslik)
+                </h6>
+                <!-- Text -->
+            </div>
+        </a>
+    </div>
+}
+

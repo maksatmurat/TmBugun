@@ -1,0 +1,22 @@
+﻿@model IEnumerable<TmBugun.Models.Haber>
+
+
+@foreach (var item in Model)
+{
+    <a href="~/Haberlers/HaberDetay/@item.Id" style="color:black">
+        <div class="text-black" style="margin:5px;">
+            <div class="text-body font-small">
+                <p style="font-weight:bold;margin:5px;font-size:14px">
+                    @Html.Raw(item.HaberBaslik.ToString().Substring(0, (item.HaberBaslik.Length > 100) ? 100 : item.HaberBaslik.Length))
+                </p>
+            </div>
+            <div class="page-footer" style="font-size:14px;">
+                @Html.Raw(item.HaberTarih.ToShortDateString())
+                @Html.Raw(item.HaberTarih.ToShortTimeString())
+                |
+                @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+            </div>
+        </div>
+    </a>
+}
+

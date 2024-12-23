@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TmBugun.Models.SportKategorileri>
+
+<div class="container gizle" style="color:white;padding-left:10%;">
+    <a href="~/Sportlars/SportAnaSayfa" style="margin:5px;font-size:25px;font-weight:bold;color:black   ;">Sport Haberler</a>
+    <ul class="list-group list-group-horizontal" style="background-color:rgba(0, 0, 0, 0.00);border:0;">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item" style="padding:2px;background-color:rgba(0, 0, 0, 0.00);border:0;">
+                <a href="~/Sportlars/kategoriSport/@item.Id" style="color:black">
+                    <div type="button" onclick="/Sportlars/kategoriSport/@item.Id" class="btn btn-outline-red waves-effect kategoributonlari" style="padding:2px;background-color:red">
+                        <p style="font-size:10px;padding:8px;margin:0;color:black;">@Html.Raw(item.SportKategori)</p>
+                    </div>
+                </a>
+            </li>
+        }
+        <a href="/Sportlars/TumSportHaberler" class="btn btn-yellow waves-effect  tumHaberlerButton" style="background-color:#ffd230;color:black;">Tum Sport Haberler</a>
+    </ul>
+</div>
+
+
+<div class="container  goster" >
+    <a href="~/Sportlars/SportAnaSayfa" style="margin-left:-10px;margin-bottom:20px;color:black;font-size:25px;font-weight:bold;">Sport Haberler</a>
+    <div class="navigation-wrapper">
+        <div class="navigation-button" disabled style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(255, 209, 48));color:black;">
+            <h5 class="gizlegosterKa" style="margin:10px;color:black;">Kategoriler</h5>  <i class="fa fa-bars"></i>
+        </div>
+        <div class="navigation-menu" style="background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(255, 210, 48));color:black">
+            <ul>
+                @foreach (var item2 in Model)
+                {
+                    <li><a href="~/Sportlars/kategoriSport/@item2.Id" style="color:black;">@Html.DisplayFor(modelItem => item2.SportKategori)</a></li>
+                }
+                <a style="color:black;font-weight:900;font-size:20px;" href="/Sportlars/TumSportHaberler">Tum Haberler</a>
+            </ul>
+        </div>
+    </div>
+</div>

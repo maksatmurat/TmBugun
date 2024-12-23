@@ -1,0 +1,89 @@
+﻿@model TmBugun.Models.Videolar
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Yazar/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Videolar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Yayimci.Yayimci_ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yayimci.Yayimci_ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoBasligi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoBasligi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoBegeniSayi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoBegeniSayi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoEklenmeTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoEklenmeTarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoYol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoYol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoBasligiEN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoBasligiEN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoBasligiRU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoBasligiRU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VideoBasligiTR)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VideoBasligiTR)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,216 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<TmBugun.Models.Haber>
+
+<div style="background-color:#bb1919">
+    <div class="row" style="margin:0;">
+        <div class="col-12 col-md-10 col-lg-10">
+            <div class="container">
+                @Html.Action("AnaSayfaKategoriler", "Haberlers", new { area = "" })
+            </div>
+        </div>
+        @*<div class="col-12 col-md-2 col-lg-2 ">
+            @Html.Action("Search", "Home", new { area = "" })
+        </div>*@
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="margin:25px 0 25px 0">
+        <div class="col-12 col-lg-8 col-md-12 col-sm-12">
+            @Html.Action("AnaSayfaSec1", "Haberlers", new { area = "" })
+        </div>
+        <div class="col-12 col-lg-4 col-md-12 col-sm-12">
+            @Html.Action("AnaSayfaSec1IkinciKisim", "Haberlers", new { area = "" })
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" style="margin:25px 0 25px 0">
+        <div class="col-12 col-lg-7 col-md-7 col-sm-12">
+            @Html.Action("AnaSayfaSec2", "Haberlers", new { area = "" })
+        </div>
+        <div class="col-12 col-lg-5 col-md-5 col-sm-12">
+            <div class="row">
+                @Html.Action("AnaSayfaSec2IkinciKisim", "Haberlers", new { area = "" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h4><a style="color:red;font-weight:bold">|</a> One Cikanlar haberler</h4>
+    <div class="row" style="margin:25px 0 25px 0">
+        <div class="col-12 col-lg-4 col-md-4 col-sm-12">
+            @Html.Action("AnaSayfaSec3", "Haberlers", new { area = "" })
+        </div>
+        <div class="col-12 col-lg-8 col-md-8 col-sm-12">
+            @Html.Action("AnaSayfaSec3IkinciKisim", "Haberlers", new { area = "" })
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h4><a style="color:red;font-weight:bold">|</a>En Cok Begenilen Haberler</h4>
+    @Html.Action("AnaSayfaSec4", "Haberlers", new { area = "" })
+</div>
+
+<div class="container" style="margin-top:50px;">
+    <h4><a style="color:red;font-weight:bold;margin-bottom:15px;">|</a>Kategori Haberleri</h4>
+    @Html.Action("AnaSayfaSec5", "Haberlers", new { area = "" })
+</div>
+
+<div class="container" style="margin-top:50px;">
+    <h4><a style="color:red;font-weight:bold;margin-bottom:15px">|</a> Bizi Buralarda Bulabilirsiniz</h4>
+    <div class="row">
+        @Html.Action("IletisimBilgileri", "Home", new { area = "" })
+    </div>
+</div>
+
+<footer class="page-footer font-small" style="background-color:#4c4c4c">
+
+        <!-- Footer Links -->
+        <div class="container text-md-left" style="padding:0;">
+            <h4 class="text-left" style="padding:20px 0 20px 0;font-family: 'Noto Serif', serif;">TMB ile Kesfet</h4>
+            <!-- Grid row -->
+            <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                    <!-- Links -->
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="nav-link">Ana Sayfa</a>
+                        </li>
+                        <li>
+                            <a class="nav-link active" href="/haberlers/AnaSayfa">Haberler</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#!">Sportlar</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#!">Kultur</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                    <!-- Links -->
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="nav-link " href="#!">Yemek</a>
+                        </li>
+                        <li>
+                            <a class="nav-link " href="#!">Canli Yayin</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="#!">Diger</a>
+                        </li>
+                        <li>
+                            <a class="nav-link " href="#!">Finans</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                    <!-- Links -->
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                    <!-- Links -->
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+        <div class="container" style="padding:20px 0 20px 0">
+
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <h6>Kullanım Şartları</h6>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <a href="/Yazar/KayitIslemleri/Login">Yazar Girisi</a>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <h6>TMB Hakkinda</h6>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <h6>Gizlilik Politikası</h6>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <h6>TMB ile iletişim kurun</h6>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-2 col-md-2 col-sm-6">
+                    <h6>Cookies</h6>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+
+        </div>
+        <!-- Footer Elements -->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">
+            © 2018 Copyright:
+            <a href="#"> MaksatMyrat</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>

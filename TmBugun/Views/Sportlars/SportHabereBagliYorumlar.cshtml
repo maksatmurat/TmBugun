@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TmBugun.Models.Yorumlar>
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+@if (Model == null)
+{
+    <h4 class="text-light">
+       Sport Habere Bagli Yorum Bulunmamakta
+    </h4>
+}
+
+<div class="row" style="padding:5px;">
+    @foreach (var item in Model)
+    {
+        <div class="col-12">
+             <div class="media">
+            @if (item.NormalKullanici.kullaniciResim != null)
+            {
+                @Html.Raw("<img class='d-flex rounded-circle avatar z-depth-1-half mr-3' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                 + Convert.ToBase64String(item.NormalKullanici.kullaniciResim) + "\" />")
+            }
+            <img src="~/Content/img/user_5-15-512.png" alt="icon" class="d-flex rounded-circle avatar z-depth-1-half mr-3">
+            <div class="media-body">
+                <h5 class="mt-0 font-weight-bold blue-text">
+                    @Html.Raw(item.NormalKullanici.KullaniciAd)
+                </h5>
+                <p style="font-size:15px;">
+                    - @Html.Raw(item.Yorum)
+                </p>
+                <div class="">
+                    Yorumu Begenen Kisi Sayisi <span id="Begenisayi">@Html.Raw(item.YorumBegSayi)</span>
+                </div>
+                <div class="text-right">
+                    @if (Session["NormalID"] != null)
+                    {
+                        <h4> Yorumu Begen</h4>
+                        <button type="button" id="Yorumbengen" style="border-radius:10px 10px;" class="btn btn-fb btn-sm pr-6 pl-6"><i class="fas fa-thumbs-up"></i></button>
+                    }
+                </div>
+            </div>
+        </div>
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function () {
+                $("#Yorumbengen").click(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: "/Sportlars/YorumBegen",
+                    data: { yorumid: @item.Id },
+                    dataType: 'json',
+                    success: function(data) {
+                            alert("Yorumu Begendiniz");
+                        $("#Begenisayi").html(data.YorumBegSayi);
+                        }
+                    });
+                });
+            })
+        </script>
+    }
+</div>
+
+

@@ -1,0 +1,140 @@
+﻿@model TmBugun.Models.Yayimci
+@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card ">
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">supervised_user_circle</i>
+        </div>
+        <h4 class="card-title">Yazar Ekle</h4>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Edit", "Yayimcis", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true)
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">Yazar Adi</label>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.Yayimci_ad, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Yayimci_ad, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">Yazar Soyad</label>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.Yayimci_soyad, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Yayimci_soyad, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">Yazar Eposta</label>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.Yayimci_eposta, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Yayimci_eposta, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">Yazar Sifre</label>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.Yayimci_sifre, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Yayimci_sifre, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">Yazar resim</label>
+                        <div class="col-md-3 col-sm-4">
+                            <h4 class="title">Avatar</h4>
+                            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                <div class="fileinput-new thumbnail img-circle">
+                                    <img src="~/Areas/assets/img/placeholder.jpg" alt="...">
+                                </div>
+                                <div class="fileinput-preview fileinput-exists thumbnail img-circle"></div>
+                                <div>
+                                    <span class="btn btn-round btn-rose btn-file">
+                                        <span class="fileinput-new">Add Photo</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="file" name="resim" />
+                                    </span>
+                                    <br />
+                                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">Yazar Yas</label>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.YayimciYas, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.YayimciYas, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">Yazar Facebook</label>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.YayimciFacebook, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.YayimciFacebook, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">Yazar Twitter</label>
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                @Html.EditorFor(model => model.YayimciTwitter, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.YayimciTwitter, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <input type="submit" value="Ekle" class="btn btn-default" />
+                </div>
+                <div class="col-md-3 ml-auto">
+                    @Html.ActionLink("Geri Don", "Index", "", new { @class = "btn btn-default" })
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

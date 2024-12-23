@@ -1,0 +1,33 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using TmBugun.Models
+@model IPagedList<Haber>
+
+@if (Session["YazarID"] == null)
+{
+    Response.Redirect("~/Yazar/KayitIslemleri/Login");
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Yazar/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">all_inbox</i>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-sm-2">
+                <h4 class="card-title left">Haberler</h4>
+            </div>
+            <a class="col-md-3 col-sm-3 btn btn-success ml-auto" href="~/Yazar/Habers/Create">Haber Ekle</a>
+        </div>
+    </div>
+</div>
+
+<div id="dvHaberListesi">
+    @Html.Partial("~/Areas/Yazar/Views/Habers/HaberListesi.cshtml", Model)
+</div>
+
+

@@ -1,0 +1,108 @@
+﻿  <div class="share">
+        <span >Paylaş</span>
+        <div>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+  </div>
+
+<style>
+
+    .share {
+        border-radius: 40px;
+    }
+
+        .share span {
+            line-height: 40px;
+            display: inline-block;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: absolute;
+            left: 36%;
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+            color: black;
+            z-index: 300;
+            background-color: #ffd230;
+            /*background-image: linear-gradient(rgb(216, 95, 199),rgb(198, 31, 133),rgb(222, 30, 95));*/
+        }
+
+        .share div {
+            font-size: 0;
+        }
+
+        .share a {
+            line-height: 40px;
+            width: 40px;
+            text-align: center;
+            display: inline-block;
+            background-color: white;
+            color: white;
+            overflow: hidden;
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 3px 1px 3px rgba(0,0,0,0.1);
+            background-color: #ffd230;
+            /*background-image: linear-gradient(rgb(216, 95, 199),rgb(198, 31, 133),rgb(222, 30, 95));*/
+        }
+
+            .share a:hover {
+                background-image: none;
+            }
+
+            .share a:nth-child(1) {
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                margin-left: 0;
+            }
+
+                .share a:nth-child(1):hover {
+                    background-color: #3b5998;
+                }
+
+            .share a:nth-child(2):hover {
+                background-color: #71c5ec;
+            }
+
+            .share a:nth-child(3):hover {
+                background-color: #ea4335;
+            }
+
+            .share a:nth-child(4) {
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                margin-right: 0;
+            }
+
+                .share a:nth-child(4):hover {
+                    background-color: orange;
+                }
+
+        .share:hover span, .share.hover span {
+            opacity: 0;
+        }
+
+        .share:hover a, .share.hover a {
+            border-radius: 50%;
+            margin: 0 5px;
+            color: white;
+            font-size: 20px;
+        }
+
+            .share:hover a:hover, .share.hover a:hover {
+                color: white;
+            }
+</style>
+<script>
+    "use strict";
+    var share = document.querySelector('.share');
+    setTimeout(function () {
+        share.classList.add("hover");
+    }, 1000);
+    setTimeout(function () {
+        share.classList.remove("hover");
+    }, 3000);
+</script>

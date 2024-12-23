@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TmBugun.Models.AdminBilgileri>
+@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+@{
+    ViewBag.Title = "Index";
+}
+<div class="card">
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">AB</i>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <h4 class="card-title left">Admin Bilgiler</h4>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Admin Ad </th>
+                        <th>Sifre</th>
+                        <th>Islemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.AdminAd)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Adminsifre)
+                            </th>
+                            <td class="td-actions text-left">
+                                <button type="button" rel="tooltip" title="Duzenle" class="btn btn-success btn-round" onclick="location.href='@Url.Action("Edit", "AdminBilgileris",new { id=item.Id})'">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <thead>
+            </table>
+        </div>
+    </div>
+</div>
+

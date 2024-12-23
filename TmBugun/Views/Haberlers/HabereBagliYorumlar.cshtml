@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TmBugun.Models.Yorumlar>
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+@if (Model == null)
+{
+    <h4 class="text-light">
+        Habere Bagli Yorum Bulunmamakta
+    </h4>
+}
+
+<div class="row" style="padding:5px;">
+    @foreach (var item in Model)
+    {
+        <div class="col-12" >
+            <div class="row"  style="background-color:#2bce24;padding:2%;border-radius:10px 10px; margin-bottom:10px;">
+                <div class="col-2" style="padding:0 0 0 5%">
+                    @if (item.NormalKullanici.kullaniciResim != null)
+                    {
+                        @Html.Raw("<img  style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                         + Convert.ToBase64String(item.NormalKullanici.kullaniciResim) + "\" />")
+                    }
+                    <img src="~/Content/img/user_5-15-512.png" width="40" height="40" alt="icon" class="rounded-circle">
+                </div>
+                <div class="col-4" style="padding:0;">
+                    <p style="margin:0;padding:5px 0 5px 0;">
+                        @Html.Raw(item.NormalKullanici.KullaniciAd)
+                    </p>
+                </div>
+                <div class="col-2 offset-4 gizle text-right">
+                    @Html.Raw(item.YorumTarih.ToShortDateString())
+                </div>
+                <div class="col-12 col-lg-12 col-md-12 col-sm-12" style="margin-top:10px;border-bottom:1px solid black;border-top:1px solid black">
+                    <p style="font-size:15px;">
+                        - @Html.Raw(item.Yorum)
+                    </p>
+                </div>
+                <div class="col-4">
+                    Yorumu Begenen Kisi Sayisi <span id="Begenisayi">@Html.Raw(item.YorumBegSayi)</span>
+                </div>
+                <div class="col-3 offset-5 text-right">
+                    @if (Session["NormalID"] != null)
+                      {
+                        <h4> Yorumu Begen</h4>
+                        <button type= "button" id= "Yorumbengen" style= "border-radius:10px 10px;" class="btn btn-fb btn-sm pr-6 pl-6"><i class="fas fa-thumbs-up"></i></button>
+                      }
+                </div>
+            </div>
+        </div>
+        <script type = "text/javascript" >
+                    $(document).ready(function () {
+                         $("#Yorumbengen").click(function() {
+                            $.ajax({
+                                type: 'POST',
+                                url: "/Haberlers/YorumBegen",
+                                data: { yorumid: @item.Id },
+                                dataType: 'json',
+                                success: function(data) {
+                                        alert("Yorumu Begendiniz");
+                                    $("#Begenisayi").html(data.YorumBegSayi);
+                                    }
+                                });
+                            });
+                        })
+            </script>
+        }
+ </div>
+
+

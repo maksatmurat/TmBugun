@@ -1,0 +1,22 @@
+﻿@model IEnumerable<TmBugun.Models.Sport>
+
+
+<div class="row" style="margin:0 0 0 0;">
+    @foreach (var item in Model)
+    {
+    <div class="col-12 col-sm-12 col-md-6 col-lg-4" style="padding:10px;margin:0;">
+        <a href="/Sportlars/sportdetay/@item.Id" style="color:black;">
+            @Html.Raw("<img style='width:100%; height:20%;' src=\"data:image/jpeg;base64,"
+                            + Convert.ToBase64String(item.SportResim) + "\" />")
+            <p style="font-size:14px">
+                @Html.Raw(item.SportBaslik.ToString().Substring(0, (item.SportBaslik.Length > 60) ? 60 : item.SportBaslik.Length))
+            </p>
+            <p style="font-size:14px">
+                @Html.DisplayFor(modelItem => item.SportKategorileri.SportKategori)
+            </p>
+        </a>
+    </div>
+    }
+</div>
+
+

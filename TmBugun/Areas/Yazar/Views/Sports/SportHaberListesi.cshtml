@@ -1,0 +1,57 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using TmBugun.Models
+@model IPagedList<Sport>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="card card-product">
+                <div class="card-header card-header-image" data-header-animation="true">
+                    <a href="#pablo">
+                        @Html.Raw("<img class='img' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                                                       + Convert.ToBase64String(item.SportResim) + "\"  />")
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-actions text-center">
+                        <button type="button" class="btn btn-danger btn-link fix-broken-card">
+                            <i class="material-icons">build</i> Resim Onar!
+                        </button>
+                        <button type="button" class="btn btn-default btn-link" rel="tooltip" data-placement="bottom" title="Detay" onclick="location.href='@Url.Action("Details", "Sports",new {id=item.Id})'">
+                            <i class="material-icons">art_track</i>
+                        </button>
+                        <button type="button" class="btn btn-success btn-link" rel="tooltip" data-placement="bottom" title="Guncelle" onclick="location.href='@Url.Action("Edit", "Sports",new {id=item.Id})'">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" class="btn btn-danger btn-link" rel="tooltip" data-placement="bottom" title="Sil" onclick="location.href='@Url.Action("Delete", "Sports",new {id=item.Id})'">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </div>
+                    <h4 class="card-title">
+                        <h5 class="card-title">
+                            @Html.DisplayFor(modelItem => item.SportKategorileri.SportKategori)
+                        </h5>
+                    </h4>
+                    <div class="card-description">
+                        @Html.DisplayFor(modelItem => item.SportBaslik)
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="price">
+                        <h4>
+                            @Html.Raw(item.SportTarih.Date.ToString("dd MMM yyyy"))
+                        </h4>
+                    </div>
+                    <div class="stats">
+                        <span class="card-category"><i class="material-icons">thumb_up</i>@Html.Raw(item.SportBegenmeSayi)</span>
+                        <span class="card-category"><i class="material-icons">visibility</i> @Html.Raw(item.SportIzlenmeSayi)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "Sports", new { SayfaNo = _sayfaNo }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "dvSportListesi" }))
+

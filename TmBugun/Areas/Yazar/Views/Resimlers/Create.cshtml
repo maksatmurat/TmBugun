@@ -1,0 +1,178 @@
+﻿@model TmBugun.Models.Resimler
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Yazar/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+
+
+@using (Html.BeginForm("ResimEkle", "Resimlers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-10 col-12 mr-auto ml-auto">
+        <!--      Wizard container        -->
+        <div class="wizard-container">
+            <div class="card card-wizard" data-color="rose" id="wizardProfile">
+                <form action="#" method="post">
+                    <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+                    <div class="card-header text-center">
+                        <h3 class="card-title">
+                            Resim Haber Ekleme Formu
+                        </h3>
+                        @*<h5 class="card-description">This information will let us know more about you.</h5>*@
+                    </div>
+                    <div class="wizard-navigation">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#about" data-toggle="tab" role="tab">
+                                    Turkmence
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#account" data-toggle="tab" role="tab">
+                                    Inglizce
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#address" data-toggle="tab" role="tab">
+                                    Rusca
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#address1" data-toggle="tab" role="tab">
+                                    Turkce
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#bitir" data-toggle="tab" role="tab">
+                                    Bitir
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="about">
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-8">
+                                        <div class="picture-container">
+                                            <div class="picture" style="border-radius:0;width:100%;height:100%;">
+                                                <img src="~/Areas/assets/img/image_placeholder.jpg" class="picture-src" style="width:100%;height:100%;" id="wizardPicturePreview" title="" />
+                                                <input type="file" id="wizard-picture" name="resimoz">
+                                            </div>
+                                            <h6 class="description">Resim Sec</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <h5 class="info-text left">Turkmen Dilinde Yazin(Hokman) </h5>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-12">
+                                                <label for="exampleInput1" class="bmd-label-floating">Resim Yazisi (zorunlu)</label>
+                                                @Html.TextArea("ResimYazi")
+                                                <script type="text/javascript">
+                                                    var editor = CKEDITOR.instances['ResimYazi'];
+                                                    CKFinder.setupCKEditor(editor);
+                                                    if (editor) { editor.destroy(true); }
+                                                    CKEDITOR.replace('ResimYazi', {
+                                                        enterMode: CKEDITOR.ENTER_BR,
+                                                    });
+                                                </script>
+                                                @Html.ValidationMessageFor(model => model.ResimYazi, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="account">
+                                <div class="col-sm-12">
+                                    <h5 class="info-text left">Ingliz Dilinde Yazin(Hokman) </h5>
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-12">
+                                            <label for="exampleInput1" class="bmd-label-floating">Resim Haber Icerigi (zorunlu)</label>
+                                            @Html.TextArea("ResimYaziEN")
+                                            <script type="text/javascript">
+                                                var editor = CKEDITOR.instances['ResimYaziEN'];
+                                                CKFinder.setupCKEditor(editor);
+                                                if (editor) { editor.destroy(true); }
+                                                CKEDITOR.replace('ResimYaziEN', {
+                                                    enterMode: CKEDITOR.ENTER_BR,
+                                                });
+                                            </script>
+                                            @Html.ValidationMessageFor(model => model.ResimYaziEN, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="address">
+                                <div class="col-sm-12">
+                                    <h5 class="info-text left">Rus Dilinde Yazin(Hokman) </h5>
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-12">
+                                            <label for="exampleInput1" class="bmd-label-floating">Resim Haber Icerigi (zorunlu)</label>
+                                            @Html.TextArea("ResimYaziRU")
+                                            <script type="text/javascript">
+                                                var editor = CKEDITOR.instances['ResimYaziRU'];
+                                                CKFinder.setupCKEditor(editor);
+                                                if (editor) { editor.destroy(true); }
+                                                CKEDITOR.replace('ResimYaziRU', {
+                                                    enterMode: CKEDITOR.ENTER_BR,
+                                                });
+                                            </script>
+                                            @Html.ValidationMessageFor(model => model.ResimYaziRU, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="address1">
+                                <div class="col-sm-12">
+                                    <h5 class="info-text left">Turk Dilinde Yazin(Hokman) </h5>
+                                    <div class="row justify-content-center">
+
+                                        <div class="col-lg-12">
+                                            <label for="exampleInput1" class="bmd-label-floating">Sport Icerigi (zorunlu)</label>
+                                            @Html.TextArea("ResimYaziTR")
+                                            <script type="text/javascript">
+                                                var editor = CKEDITOR.instances['ResimYaziTR'];
+                                                CKFinder.setupCKEditor(editor);
+                                                if (editor) { editor.destroy(true); }
+                                                CKEDITOR.replace('ResimYaziTR', {
+                                                    enterMode: CKEDITOR.ENTER_BR,
+                                                });
+                                            </script>
+                                            @Html.ValidationMessageFor(model => model.ResimYaziTR, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="bitir">
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-12">
+                                        <h5 class="info-text"> Eklemek Icin Ekle Butonuna Basin </h5>
+                                        <ul>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="ml-auto">
+                            <input type="submit" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish" value="Ekle" style="display: none;">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- wizard container -->
+    </div>
+}
+

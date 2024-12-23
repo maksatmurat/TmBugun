@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Yazar/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12 col-md-10 col-sm-10">
+        <div class="row">
+            <div class="col-12">
+                @Html.Action("AnaSayfaSec1", "AnaSayfa", new { area = "Yazar" })
+            </div>
+            <div class="col-12">
+                @Html.Action("AnaSayfaSec2", "AnaSayfa", new { area = "Yazar" })
+            </div>
+            <div class="col-12">
+                @Html.Action("AnaSayfaSec2", "AnaSayfa", new { area = "Yazar" })
+            </div>
+            <div class="col-12">
+                @Html.Action("AnaSayfaSec4", "AnaSayfa", new { area = "Yazar" })
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-2 col-sm-2">
+        @Html.Action("Yorumlar_10", "AnaSayfa", new { area = "Yazar" })
+    </div>
+</div>

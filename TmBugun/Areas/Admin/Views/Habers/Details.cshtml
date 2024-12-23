@@ -1,0 +1,90 @@
+﻿@model TmBugun.Models.Haber
+@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card ">
+    <div class="card-header card-header-rose card-header-text">
+        <div class="card-text">
+            <h4 class="card-title">Haber Detayi</h4>
+        </div>
+    </div>
+    <div class="card-body ">
+        <form method="get" action="/" class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-4 col-form-label">Haber Bagli Kategori</label>
+                        <div class="col-sm-6" style="padding-top:8px;">
+                            <div class="form-group">
+                                @Html.DisplayFor(model => model.HaberKategorileri.HaberKategori)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-4 col-form-label">Haber Eklenme Tarihi</label>
+                        <div class="col-sm-6"style="padding-top:8px;">
+                            <div class="form-group">
+                                @Html.Raw(Model.HaberTarih.Date.ToString("dd MMM yyyy"))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Yayimci Adi</label>
+                <div class="col-sm-10" style="padding-top:8px;">
+                    <div class="form-group">
+                        @Html.DisplayFor(model => model.Yayimci.Yayimci_ad)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Haber Basligi</label>
+                <div class="col-sm-10" style="padding-top:8px;">
+                    <div class="form-group">
+                        @Html.DisplayFor(model => model.HaberBaslik)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Haber Icerigi</label>
+                <div class="col-sm-10" style="padding-top:8px;">
+                    <div class="form-group">
+                        @Html.DisplayFor(model => model.HaberIcerik)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-4 col-form-label">Haber begeni sayi</label>
+                        <div class="col-sm-6" style="padding-top:8px;">
+                            <div class="form-group">
+                                @Html.DisplayFor(model => model.HaberBegenmeSayi)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <label class="col-sm-4 col-form-label">Haber Izlenme sayi</label>
+                        <div class="col-sm-6" style="padding-top:8px;">
+                            <div class="form-group">
+                                @Html.DisplayFor(model => model.HaberIzlenmeSayi)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

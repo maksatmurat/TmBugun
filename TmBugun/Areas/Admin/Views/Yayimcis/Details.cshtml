@@ -1,0 +1,37 @@
+﻿@model TmBugun.Models.Yayimci
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="card-header card-header-primary card-header-icon">
+        <div class="card-icon">
+            @if (Model.YayimciResim != null)
+            {
+                @Html.Raw("<img style='width:auto; height:auto;' src=\"data:image/jpeg;base64,"
+                 + Convert.ToBase64String(Model.YayimciResim) + "\" />")
+            }
+            else if (Model.YayimciResim == null)
+            {
+                <img class="img" src="~/Areas/assets/img/faces/writingclub.png" style="width:50px;height:50px;"/>
+            }
+        </div>
+        <h4 class="card-title">@Model.Yayimci_ad  @Model.Yayimci_soyad</h4>
+    </div>
+    <div class="card-body">
+        <div class="toolbar">
+            <!--        Here you can write extra buttons/actions for the toolbar              -->
+        </div>
+        @{
+            <h4 class="card-title font-weight-bold">Yazarin Ekledigi Haberleri</h4>
+                    Html.RenderAction("bagliHaberler", new { id = Model.Id });
+
+            <h4 class="card-title font-weight-bold">Yazarin Ekledigi Sport Haberleri</h4>
+                    Html.RenderAction("bagliSportHaberler", new { id = Model.Id });
+        }
+
+    </div>
+</div>

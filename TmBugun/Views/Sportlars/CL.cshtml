@@ -1,0 +1,138 @@
+﻿@*<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link href="~/Content/css/style.css" rel="stylesheet" />
+<link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/css/mdb.min.css" rel="stylesheet" />
+<script src="~/Scripts/mdb.min.js"></script>
+<script src="~/Scripts/popper.min.js"></script>*@
+
+@*@{
+    string gun = DateTime.Now.Date.ToString("yyyy-MM-dd");
+}
+
+<script type="text/javascript">
+    $.ajax({
+        headers: { 'X-Auth-Token': '117715096b704a3f8410d21a156c647a' },
+        url: 'https://api.football-data.org/v2/competitions/CL/matches?status=SCHEDULED&dateFrom=@gun&dateTo=@gun',
+        dataType: 'json',
+        type: 'GET',
+    }).done(function (response) {
+        for (i = 0; i < response.matches.length; i++) {
+            $("#evtakim_"+i).text(response.matches[i].homeTeam.name)
+            $("#misafirtakim_"+i).text(response.matches[i].awayTeam.name)
+        };
+    });
+     $.ajax({
+        headers: { 'X-Auth-Token': '117715096b704a3f8410d21a156c647a' },
+        url: 'https://api.football-data.org/v2/competitions/',
+        dataType: 'json',
+        type: 'GET',
+    }).done(function (response) {
+        console.log(response);
+    });
+    //uefa champions league
+    $.ajax({
+        headers: { 'X-Auth-Token': '117715096b704a3f8410d21a156c647a' },
+        url: 'https://api.football-data.org/v2/competitions/2001',
+        dataType: 'json',
+        type: 'GET',
+    }).done(function (response) {
+       $("#CLligAdi").text(response.name)
+
+    });
+    //Bundesliga league
+    $.ajax({
+        headers: { 'X-Auth-Token': '117715096b704a3f8410d21a156c647a' },
+        url: 'https://api.football-data.org/v2/competitions/2002',
+        dataType: 'json',
+        type: 'GET',
+    }).done(function (response) {
+       $("#BundesligaligAdi").text(response.name)
+    });
+    //Premier league
+    $.ajax({
+        headers: { 'X-Auth-Token': '117715096b704a3f8410d21a156c647a' },
+        url: 'https://api.football-data.org/v2/competitions/2021',
+        dataType: 'json',
+        type: 'GET',
+    }).done(function (response) {
+       $("#PremierligAdi").text(response.name)
+
+    });
+    //Uefa Europa league
+    //$.ajax({
+    //    headers: { 'X-Auth-Token': '117715096b704a3f8410d21a156c647a' },
+    //    url: 'https://api.football-data.org/v2/competitions/2146',
+    //    dataType: 'json',
+    //    type: 'GET',
+    //}).done(function (response) {
+    //    console.log(response.name);
+    //   $("#ELligAdi").text(response.name)
+    //});
+    //uefa champions league
+    $.ajax({
+        headers: { 'X-Auth-Token': '117715096b704a3f8410d21a156c647a' },
+        url: 'https://api.football-data.org/v2/competitions/2135',
+        dataType: 'json',
+        type: 'GET',
+    }).done(function (response) {
+        console.log(response.name)
+        $("#BundesligaligAdi").text(response.name);
+    });
+    ////uefa champions league
+    //$.ajax({
+    //    headers: { 'X-Auth-Token': '117715096b704a3f8410d21a156c647a' },
+    //    url: 'https://api.football-data.org/v2/competitions/2019',
+    //    dataType: 'json',
+    //    type: 'GET',
+    //}).done(function (response) {
+    //    console.log(response);
+    //   $("#ligAdi").text(response.competition.name)
+
+    //});
+    ////uefa champions league
+    //$.ajax({
+    //    headers: { 'X-Auth-Token': '117715096b704a3f8410d21a156c647a' },
+    //    url: 'https://api.football-data.org/v2/competitions/2137',
+    //    dataType: 'json',
+    //    type: 'GET',
+    //}).done(function (response) {
+    //    console.log(response);
+    //   $("#ligAdi").text(response.competition.name)
+
+    //});
+    ////uefa champions league
+    //$.ajax({
+    //    headers: { 'X-Auth-Token': '117715096b704a3f8410d21a156c647a' },
+    //    url: 'https://api.football-data.org/v2/competitions/2070',
+    //    dataType: 'json',
+    //    type: 'GET',
+    //}).done(function (response) {
+    //    console.log(response);
+    //   $("#ligAdi").text(response.competition.name)
+
+    //});
+</script>
+
+
+<h4 style="margin-bottom:10px;">@gun</h4>
+<h4 style="margin-bottom:10px;"><span id="CLligAdi"></span></h4>
+<div class="row">
+    @for (int i = 0; i < 8; i++)
+    {
+        <div class="col-5">
+            <h4>
+                <span id="evtakim_@i"></span>
+            </h4>
+        </div>
+        <h4>:</h4>
+        <div class="col-5">
+            <h4 class="text-right">
+                <span id="misafirtakim_@i"></span>
+            </h4>
+        </div>
+    }
+</div>*@
+
+
+<iframe frameborder="0" marginwidth="0" marginheight="0" scrolling="auto" align="center" style="width:auto;height:1000px;" src="https://www.turboscores.com" rel="nofollow"></iframe>

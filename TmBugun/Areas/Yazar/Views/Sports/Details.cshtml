@@ -1,0 +1,438 @@
+﻿@model TmBugun.Models.Sport
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Yazar/Views/Shared/_Layout.cshtml";
+}
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v4.0"></script>
+
+
+<div class="col-md-10 col-12 mr-auto ml-auto">
+    <div class="wizard-container">
+        <div class="card card-wizard" data-color="rose" id="wizardProfile">
+            <div class="wizard-navigation">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Turkmence" data-toggle="tab" role="tab">
+                            Turkmence
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Inglizce" data-toggle="tab" role="tab">
+                            Inglizce
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Rusca" data-toggle="tab" role="tab">
+                            Rusca
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Turkce" data-toggle="tab" role="tab">
+                            Turkce
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body" style="padding-left:0;padding-right:0;">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="Turkmence">
+                        <div class="row">
+                            <div class="col-sm-4 col-7" style="padding-top:10px;">
+                                <h5 class="font-weight-bold">
+                                    <i class="material-icons" style="margin-left:10px;">
+                                        @Html.DisplayFor(model => model.SportKategorileri.SportKategoriLogo)
+                                    </i>
+
+                                    @Html.DisplayFor(model => model.SportKategorileri.SportKategori)
+                                </h5>
+                            </div>
+                            <div class="col-5 col-sm-2 ml-auto">
+                                <button class="btn btn-just-icon btn-facebook btn-sm">
+                                    <i class="fa fa-facebook"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-instagram btn-sm">
+                                    <i class="fa fa-instagram"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-twitter btn-sm">
+                                    <i class="fa fa-twitter"></i>
+                                </button>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div style="border-bottom:2px solid black"></div>
+                            </div>
+
+
+                            <div class="col-sm-12">
+                                <h4 class="card-text font-weight-bold" style="padding:10px;">
+                                    @Html.Raw(Model.SportBaslik)
+                                </h4>
+                            </div>
+
+
+
+                            @Html.Raw("<img class='card-img-top' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                                                    + Convert.ToBase64String(Model.SportResim) + "\"  />")
+                            <div class="content" style="padding:2%;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="card-text img-fluid">
+                                            @Html.Raw(Model.SportIcerik)
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p class="text-muted" style="padding:1px;margin:1px;">(yazar)</p>
+                                        <h5 class="font-weight-bold">
+                                            <i class="material-icons" style="margin-right:5px;">person</i>
+                                            @Html.DisplayFor(model => model.Yayimci.Yayimci_ad)
+                                            @Html.DisplayFor(model => model.Yayimci.Yayimci_soyad)
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-8 col-6">
+                                        <p class="text-muted">Eklenme Tarih</p>
+                                    </div>
+                                    <div class="col-sm-4 ml-auto col-6">
+                                        <p class="text-muted">Sayilar </p>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <span class="material-icons" style="margin-right:5px;">access_time</span>
+                                        <span>  @Html.Raw(Model.SportTarih.ToString("MM/dd/yyyy"))</span>
+                                    </div>
+                                    <div class="col-1 col-sm-6">
+
+                                    </div>
+                                    <div class="col-2 col-sm-1">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid red;height:40px;" data-original-title="Haber Izlenme Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">visibility</i>
+                                                @Html.DisplayFor(model => model.SportIzlenmeSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+                                    <div class="col-2 col-sm-1" style="padding-left:25px;">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid blue;height:40px;" data-original-title="Haber Begeni Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">thumb_up</i>
+                                                @Html.DisplayFor(model => model.SportBegenmeSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div style="border-bottom:2px solid black"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card ">
+                                            @{
+                                                int haberid = Convert.ToInt32(ViewData["haberId"]);
+                                                Html.RenderAction("HaberYorumlari", "Yorumlars", new { id = haberid });
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Inglizce">
+                        <div class="row">
+                            <div class="col-sm-4 col-7" style="padding-top:10px;">
+                                <h5 class="font-weight-bold">
+                                    <i class="material-icons" style="margin-left:10px;">
+                                        @Html.DisplayFor(model => model.SportKategorileri.SportKategoriLogo)
+                                    </i>
+
+                                    @Html.DisplayFor(model => model.SportKategorileri.SportKategoriEN)
+                                </h5>
+                            </div>
+                            <div class="col-5 col-sm-2 ml-auto">
+                                <button class="btn btn-just-icon btn-facebook btn-sm">
+                                    <i class="fa fa-facebook"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-instagram btn-sm">
+                                    <i class="fa fa-instagram"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-twitter btn-sm">
+                                    <i class="fa fa-twitter"></i>
+                                </button>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div style="border-bottom:2px solid black"></div>
+                            </div>
+
+
+                            <div class="col-sm-12">
+                                <h4 class="card-text font-weight-bold" style="padding:10px;">
+                                    @Html.Raw(Model.SportBaslikEN)
+                                </h4>
+                            </div>
+
+
+
+                            @Html.Raw("<img class='card-img-top' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                                                    + Convert.ToBase64String(Model.SportResim) + "\"  />")
+                            <div class="content" style="padding:2%;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="card-text img-fluid">
+                                            @Html.Raw(Model.SportIcerikEN)
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p class="text-muted" style="padding:1px;margin:1px;">(writer)</p>
+                                        <h5 class="font-weight-bold">
+                                            <i class="material-icons" style="margin-right:5px;">person</i>
+                                            @Html.DisplayFor(model => model.Yayimci.Yayimci_ad)
+                                            @Html.DisplayFor(model => model.Yayimci.Yayimci_soyad)
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-8 col-6">
+                                        <p class="text-muted">Created Date</p>
+                                    </div>
+                                    <div class="col-sm-4 ml-auto col-6">
+                                        <p class="text-muted">Numbers </p>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <span class="material-icons" style="margin-right:5px;">access_time</span>
+                                        <span>  @Html.Raw(Model.SportTarih.ToString("MM/dd/yyyy"))</span>
+                                    </div>
+                                    <div class="col-1 col-sm-6">
+
+                                    </div>
+                                    <div class="col-2 col-sm-1">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid red;height:40px;" data-original-title="Haber Izlenme Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">thumb_up</i>
+                                                @Html.DisplayFor(model => model.SportIzlenmeSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+                                    <div class="col-2 col-sm-1" style="padding-left:25px;">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid blue;height:40px;" data-original-title="Haber Begeni Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">visibility</i>
+                                                @Html.DisplayFor(model => model.SportBegenmeSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div style="border-bottom:2px solid black"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card ">
+                                            @{
+                                                Html.RenderAction("HaberYorumlari", "Yorumlars", new { id = haberid });
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="Rusca">
+                        <div class="row">
+                            <div class="col-sm-4 col-7" style="padding-top:10px;">
+                                <h5 class="font-weight-bold">
+                                    <i class="material-icons" style="margin-left:10px;">
+                                        @Html.DisplayFor(model => model.SportKategorileri.SportKategoriLogo)
+                                    </i>
+
+                                    @Html.DisplayFor(model => model.SportKategorileri.SportKategoriRU)
+                                </h5>
+                            </div>
+                            <div class="col-5 col-sm-2 ml-auto">
+                                <button class="btn btn-just-icon btn-facebook btn-sm">
+                                    <i class="fa fa-facebook"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-instagram btn-sm">
+                                    <i class="fa fa-instagram"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-twitter btn-sm">
+                                    <i class="fa fa-twitter"></i>
+                                </button>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div style="border-bottom:2px solid black"></div>
+                            </div>
+
+
+                            <div class="col-sm-12">
+                                <h4 class="card-text font-weight-bold" style="padding:10px;">
+                                    @Html.Raw(Model.SportBaslikRU)
+                                </h4>
+                            </div>
+
+
+
+                            @Html.Raw("<img class='card-img-top' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                                                    + Convert.ToBase64String(Model.SportResim) + "\"  />")
+                            <div class="content" style="padding:2%;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="card-text img-fluid">
+                                            @Html.Raw(Model.SportIcerikRU)
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p class="text-muted" style="padding:1px;margin:1px;">(editor)</p>
+                                        <h5 class="font-weight-bold">
+                                            <i class="material-icons" style="margin-right:5px;">person</i>
+                                            @Html.DisplayFor(model => model.Yayimci.Yayimci_ad)
+                                            @Html.DisplayFor(model => model.Yayimci.Yayimci_soyad)
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-8 col-6">
+                                        <p class="text-muted">Data sozdanii</p>
+                                    </div>
+                                    <div class="col-sm-4 ml-auto col-6">
+                                        <p class="text-muted">V chislah </p>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <span class="material-icons" style="margin-right:5px;">access_time</span>
+                                        <span>  @Html.Raw(Model.SportTarih.ToString("MM/dd/yyyy"))</span>
+                                    </div>
+                                    <div class="col-1 col-sm-6">
+
+                                    </div>
+                                    <div class="col-2 col-sm-1">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid red;height:40px;" data-original-title="Haber Izlenme Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">thumb_up</i>
+                                                @Html.DisplayFor(model => model.SportIzlenmeSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+                                    <div class="col-2 col-sm-1" style="padding-left:25px;">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid blue;height:40px;" data-original-title="Haber Begeni Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">visibility</i>
+                                                @Html.DisplayFor(model => model.SportBegenmeSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div style="border-bottom:2px solid black"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card ">
+                                            @{
+                                                Html.RenderAction("SportYorumlari", "Yorumlars", new { id = haberid });
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="Turkce">
+                        <div class="row">
+                            <div class="col-sm-4 col-7" style="padding-top:10px;">
+                                <h5 class="font-weight-bold">
+                                    <i class="material-icons" style="margin-left:10px;">
+                                        @Html.DisplayFor(model => model.SportKategorileri.SportKategoriLogo)
+                                    </i>
+
+                                    @Html.DisplayFor(model => model.SportKategorileri.SportKategoriTR)
+                                </h5>
+                            </div>
+                            <div class="col-5 col-sm-2 ml-auto">
+                                <button class="btn btn-just-icon btn-facebook btn-sm">
+                                    <i class="fa fa-facebook"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-instagram btn-sm">
+                                    <i class="fa fa-instagram"></i>
+                                </button>
+                                <button class="btn btn-just-icon btn-twitter btn-sm">
+                                    <i class="fa fa-twitter"></i>
+                                </button>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div style="border-bottom:2px solid black"></div>
+                            </div>
+
+
+                            <div class="col-sm-12">
+                                <h4 class="card-text font-weight-bold" style="padding:10px;">
+                                    @Html.Raw(Model.SportBaslikTR)
+                                </h4>
+                            </div>
+
+
+
+                            @Html.Raw("<img class='card-img-top' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                                                    + Convert.ToBase64String(Model.SportResim) + "\"  />")
+                            <div class="content" style="padding:2%;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p class="card-text img-fluid">
+                                            @Html.Raw(Model.SportIcerikTR)
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <p class="text-muted" style="padding:1px;margin:1px;">(yazar)</p>
+                                        <h5 class="font-weight-bold">
+                                            <i class="material-icons" style="margin-right:5px;">person</i>
+                                            @Html.DisplayFor(model => model.Yayimci.Yayimci_ad)
+                                            @Html.DisplayFor(model => model.Yayimci.Yayimci_soyad)
+                                        </h5>
+                                    </div>
+                                    <div class="col-sm-8 col-6">
+                                        <p class="text-muted">Eklenme Tarih</p>
+                                    </div>
+                                    <div class="col-sm-4 ml-auto col-6">
+                                        <p class="text-muted">Sayilar </p>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <span class="material-icons" style="margin-right:5px;">access_time</span>
+                                        <span>  @Html.Raw(Model.SportTarih.ToString("MM/dd/yyyy"))</span>
+                                    </div>
+                                    <div class="col-1 col-sm-6">
+
+                                    </div>
+                                    <div class="col-2 col-sm-1">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid red;height:40px;" data-original-title="Haber Izlenme Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">thumb_up</i>
+                                                @Html.DisplayFor(model => model.SportIzlenmeSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+                                    <div class="col-2 col-sm-1" style="padding-left:25px;">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid blue;height:40px;" data-original-title="Haber Begeni Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">visibility</i>
+                                                @Html.DisplayFor(model => model.SportBegenmeSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div style="border-bottom:2px solid black"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card ">
+                                            @{
+                                                Html.RenderAction("SportYorumlari", "Yorumlars", new { id = haberid });
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,67 @@
+﻿@model TmBugun.Models.SportKategorileri
+
+@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card ">
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">list</i>
+        </div>
+        <h4 class="card-title">Kategoriyi Guncelle</h4>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p class="h4 font-weight-bold">Altaki Ikonlardan Birini Seciniz ve Yukariya Yaziniz</p>
+            <div class="iframe-container d-none d-lg-block" style="margin-top:20px;">
+                <iframe src="https://design.google.com/icons/">
+                </iframe>
+            </div>
+            <div class="form-group">
+                <label for="examplePass" class="bmd-label-floating">Kategori Logosu</label>
+                @Html.EditorFor(model => model.SportKategoriLogo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SportKategoriLogo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label for="exampleEmail" class="bmd-label-floating"> Kategori Adi</label>
+                @Html.EditorFor(model => model.SportKategori, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SportKategori, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="exampleEmail" class="bmd-label-floating"> Kategori Adi EN</label>
+                @Html.EditorFor(model => model.SportKategoriEN, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SportKategoriEN, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="exampleEmail" class="bmd-label-floating"> Kategori Adi RU</label>
+                @Html.EditorFor(model => model.SportKategoriRU, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SportKategoriRU, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label for="exampleEmail" class="bmd-label-floating"> Kategori Adi TR</label>
+                @Html.EditorFor(model => model.SportKategoriTR, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SportKategoriTR, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="card-footer ">
+                <button type="submit" class="btn btn-fill btn-rose">Guncelle</button>
+                <button type="button" class="btn btn-fill btn-rose" onclick="location.href='@Url.Action("Index", "SportKategorileris")'">Geri Don</button>
+            </div>
+        }
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="full-height">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>TM Bugun Hos Geldiniz</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif&display=swap" rel="stylesheet">
+    <link href="~/Content/css/mdb.min.css" rel="stylesheet">
+    <link href="~/Content/css/style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax-min.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v5.0&appId=213660172576370&autoLogAppEvents=1"></script>
+</head>
+<body>
+    <nav class="menu-activea" style="margin:0">
+            <h1>MENU</h1>
+            <ul>
+                <li>
+                    <a class="" href="/home/index" style="padding:0"><img src="~/content/img/Tm_icon.png" style="height:40px;width:80px;" /></a>
+                </li>
+                <li>
+                    @if (Session["NormalID"] != null)
+                    {
+                        <a class="" href="#" style="color:white;position:relative;margin:2px 0 4px 0;">@Session["NormalAdi"].ToString()</a>
+                    }
+                    else
+                    {
+                        <a class="" href="/Login/login" style="color:white;"><i class="fas fa-user-circle"> Giris Yap</i></a>
+                    }
+                </li>
+                <li>
+                    <a class="" style="color:white;" href="/haberlers/AnaSayfa">Haberler</a>
+                </li>
+                <li>
+                    <a class="" style="color:white;" href="/Sportlars/SportAnaSayfa">Sportlar</a>
+                </li>
+                <li>
+                    <a class="" style="color:white;" href="/CanliYayin/Index">Canli Yayin</a>
+                </li>
+                <li>
+                    <a class="" style="color:white;" href="/Resims/AnaSayfa">Resimler</a>
+                </li>
+                <li>
+                    <a class="" style="color:white;" href="/Videolars/AnaSayfa">Videolar</a>
+                </li>
+                <li>Hizmetler</li>
+                <li>Hakkimizda</li>
+                <li>Diger</li>
+            </ul>
+        </nav>
+        <main>
+                <section>
+                    @RenderBody()
+                </section>
+        </main>
+
+    
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="~/Scripts/popper.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/popper.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="~/Scripts/mdb.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/mdb.js"></script>
+
+    <script type="text/javascript">
+        (function () {
+            var nav = $('nav'),
+                menu = $('nav h1'),
+                main = $('main'),
+                open = false,
+                hover = false;
+
+            menu.on('click', function () {
+                open = !open ? true : false;
+                nav.toggleClass('menu-active');
+                main.toggleClass('menu-active');
+                nav.removeClass('menu-hover');
+            });
+            menu.hover(function () {
+                if (!open) {
+                    nav.addClass('menu-hover');
+                    main.addClass('menu-hover');
+                }
+            }, function () {
+                nav.removeClass('menu-hover');
+                main.removeClass('menu-hover')
+            });
+        })();
+
+        function expand() {
+            $(".search").toggleClass("close");
+            $(".input").toggleClass("square");
+
+            if ($('.search').hasClass('close')) {
+                $('input').focus();
+            } else {
+                $('input').blur();
+            }
+        }
+        $('button').on('click', expand)
+
+
+        $('.book').on('click', function () {
+            $(this).toggleClass('book-expanded');
+        })
+
+
+        var navButton = document.querySelector('.navigation-button');
+        var navMenu = document.querySelector('.navigation-menu');
+        var win = window;
+
+        function openMenu(event) {
+
+            navButton.classList.toggle('active');
+            navMenu.classList.toggle('active');
+
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }
+
+        function closeMenu(event) {
+            if (navButton.classList.contains('active')) {
+                navButton.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        }
+        navButton.addEventListener('click', openMenu, false);
+
+        win.addEventListener('click', closeMenu, false);
+
+    </script>
+</body>
+</html>

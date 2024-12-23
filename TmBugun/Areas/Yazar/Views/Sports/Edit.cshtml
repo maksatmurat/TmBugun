@@ -1,0 +1,254 @@
+﻿@model TmBugun.Models.Sport
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Yazar/Views/Shared/_Layout.cshtml";
+}
+
+
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+<script src="~/Scripts/ckfinder/ckfinder.js"></script>
+
+
+@using (Html.BeginForm("Edit", "Sports", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-10 col-12 mr-auto ml-auto">
+        <!--      Wizard container        -->
+        <div class="wizard-container">
+            <div class="card card-wizard" data-color="rose" id="wizardProfile">
+                <form action="#" method="post">
+                    <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
+                    <div class="card-header text-center">
+                        <h3 class="card-title">
+                            Haber Ekleme Formu
+                        </h3>
+                        @*<h5 class="card-description">This information will let us know more about you.</h5>*@
+                    </div>
+                    <div class="wizard-navigation">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#about" data-toggle="tab" role="tab">
+                                    Turkmence
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#account" data-toggle="tab" role="tab">
+                                    Inglizce
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#address" data-toggle="tab" role="tab">
+                                    Rusca
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#address1" data-toggle="tab" role="tab">
+                                    Turkce
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#bitir" data-toggle="tab" role="tab">
+                                    Bitir
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="about">
+                                @*<h5 class="info-text"> Let's start with the basic information (with validation)</h5>*@
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-6">
+                                        <div class="picture-container">
+                                            <div class="picture" style="border-radius:0;width:100%;height:100%;">
+                                                <img src="~/Areas/assets/img/image_placeholder.jpg" class="picture-src" style="width:100%;height:100%;" id="wizardPicturePreview" title="" />
+                                                <input type="file" id="wizard-picture" name="resim">
+                                            </div>
+                                            <h6 class="description">Resim Sec</h6>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="input-group form-control-lg" style="padding-top:10%;">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">HK</i>
+                                                </span>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.DropDownList("SportkategoriId", null, htmlAttributes: new { @class = "form-control", @id = "exampleInput1" })
+                                                @Html.ValidationMessageFor(model => model.SportkategoriId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="input-group form-control-lg" style="padding-top:10%;">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">BT</i>
+                                                </span>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.DropDownList("SportBlogTipId", null, htmlAttributes: new { @class = "form-control", @id = "exampleInput11" })
+                                                @Html.ValidationMessageFor(model => model.SportBlogTipId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <h5 class="info-text left">Turkmen Dilinde Yazin(Hokman) </h5>
+                                        <div class="row justify-content-center">
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <i class="material-icons">HB</i>
+                                                    </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInput1" class="bmd-label-floating">Haber Basligi (zorunlu)</label>
+                                                    @Html.EditorFor(model => model.SportBaslik, new { htmlAttributes = new { @class = "form-control", @id = "exampleInput1" } })
+                                                    @Html.ValidationMessageFor(model => model.SportBaslik, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <label for="exampleInput1" class="bmd-label-floating">Haber Icerigi (zorunlu)</label>
+                                                @Html.TextArea("SportIcerik")
+                                                <script type="text/javascript">
+                                                    var editor = CKEDITOR.instances['SportIcerik'];
+                                                    CKFinder.setupCKEditor(editor);
+                                                    if (editor) { editor.destroy(true); }
+                                                    CKEDITOR.replace('SportIcerik', {
+                                                        enterMode: CKEDITOR.ENTER_BR,
+                                                    });
+                                                </script>
+                                                @Html.ValidationMessageFor(model => model.SportIcerik, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="account">
+                                <div class="col-sm-12">
+                                    <h5 class="info-text left">Ingliz Dilinde Yazin(Hokman) </h5>
+                                    <div class="row justify-content-center">
+                                        <div class="input-group form-control-lg">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">HB</i>
+                                                </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInput1" class="bmd-label-floating">Sport Basligi (zorunlu)</label>
+                                                @Html.EditorFor(model => model.SportBaslikEN, new { htmlAttributes = new { @class = "form-control", @id = "exampleInput1" } })
+                                                @Html.ValidationMessageFor(model => model.SportBaslikEN, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label for="exampleInput1" class="bmd-label-floating">Sport Icerigi (zorunlu)</label>
+                                            @Html.TextArea("SportIcerikEN")
+                                            <script type="text/javascript">
+                                                var editor = CKEDITOR.instances['SportIcerikEN'];
+                                                CKFinder.setupCKEditor(editor);
+                                                if (editor) { editor.destroy(true); }
+                                                CKEDITOR.replace('SportIcerikEN', {
+                                                    enterMode: CKEDITOR.ENTER_BR,
+                                                });
+                                            </script>
+                                            @Html.ValidationMessageFor(model => model.SportIcerikEN, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="address">
+                                <div class="col-sm-12">
+                                    <h5 class="info-text left">Rus Dilinde Yazin(Hokman) </h5>
+                                    <div class="row justify-content-center">
+                                        <div class="input-group form-control-lg">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">HB</i>
+                                                </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInput1" class="bmd-label-floating">Sport Basligi (zorunlu)</label>
+                                                @Html.EditorFor(model => model.SportBaslikRU, new { htmlAttributes = new { @class = "form-control", @id = "exampleInput1" } })
+                                                @Html.ValidationMessageFor(model => model.SportBaslikRU, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label for="exampleInput1" class="bmd-label-floating">Sport Icerigi (zorunlu)</label>
+                                            @Html.TextArea("SportIcerikRU")
+                                            <script type="text/javascript">
+                                                var editor = CKEDITOR.instances['SportIcerikRU'];
+                                                CKFinder.setupCKEditor(editor);
+                                                if (editor) { editor.destroy(true); }
+                                                CKEDITOR.replace('SportIcerikRU', {
+                                                    enterMode: CKEDITOR.ENTER_BR,
+                                                });
+                                            </script>
+                                            @Html.ValidationMessageFor(model => model.SportIcerikRU, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="address1">
+                                <div class="col-sm-12">
+                                    <h5 class="info-text left">Turk Dilinde Yazin(Hokman) </h5>
+                                    <div class="row justify-content-center">
+                                        <div class="input-group form-control-lg">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="material-icons">HB</i>
+                                                </span>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInput1" class="bmd-label-floating">Sport Basligi (zorunlu)</label>
+                                                @Html.EditorFor(model => model.SportBaslikTR, new { htmlAttributes = new { @class = "form-control", @id = "exampleInput1" } })
+                                                @Html.ValidationMessageFor(model => model.SportBaslikTR, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label for="exampleInput1" class="bmd-label-floating">Sport Icerigi (zorunlu)</label>
+                                            @Html.TextArea("SportIcerikTR")
+                                            <script type="text/javascript">
+                                                var editor = CKEDITOR.instances['SportIcerikTR'];
+                                                CKFinder.setupCKEditor(editor);
+                                                if (editor) { editor.destroy(true); }
+                                                CKEDITOR.replace('SportIcerikTR', {
+                                                    enterMode: CKEDITOR.ENTER_BR,
+                                                });
+                                            </script>
+                                            @Html.ValidationMessageFor(model => model.SportIcerik, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="bitir">
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-12">
+                                        <h5 class="info-text"> Eklemek Icin Ekle Butonuna Basin </h5>
+                                        <ul>
+                                            <li></li>
+                                            <li></li>
+                                            <li></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        @*<div class="mr-auto">
+                                <input type="button" class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous" value="Previous">
+                            </div>*@
+                        <div class="ml-auto">
+                            @*<button type="button" class="btn btn-fill btn-rose" onclick="location.href='@Url.Action("Index", "Habers")'">Geri Don</button>*@
+                            <input type="submit" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish" value="Guncelle" style="display: none;">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- wizard container -->
+    </div>
+}

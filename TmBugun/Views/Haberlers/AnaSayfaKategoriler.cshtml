@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TmBugun.Models.HaberKategorileri>
+
+
+    <div class="container gizle" style="color:white;padding-left:10%;">
+        <a href="~/Haberlers/AnaSayfa" style="margin:5px;font-size:25px;font-weight:bold;color:white;">Haberler</a>
+       <ul class="list-group list-group-horizontal" style="background-color:rgba(0, 0, 0, 0.00);border:0;">
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item" style="padding:2px;background-color:rgba(0, 0, 0, 0.00);border:0;">
+                    <a href="~/Haberlers/kategorihaber/@item.Id" style="color:black">
+                        <div type="button" onclick="/Haberlers/kategorihaber/@item.Id" class="btn btn-outline-red waves-effect kategoributonlari" style="padding:2px;background-color:red">
+                            <p style="font-size:10px;padding:8px;margin:0;color:white;">@Html.Raw(item.HaberKategori)</p>
+                        </div>
+                    </a>
+                </li>
+            }
+           <a href="/Haberlers/TumHaberler" class="btn btn-red waves-effect  tumHaberlerButton"style="background-color:#bb1919;color:white;">Tum Haberler</a>
+        </ul>
+    </div>
+
+
+<div class="container  goster">
+    <a href="~/Haberlers/AnaSayfa" style="margin-left:-10px;margin-bottom:20px;color:white;font-size:25px;font-weight:bold;">Haberler</a>
+    <div class="navigation-wrapper">
+        <div class="navigation-button" disabled>
+            <h5 class="gizlegosterKa" style="margin:10px;color:white;">Kategoriler</h5>  <i class="fa fa-bars"></i>
+        </div>
+        <div class="navigation-menu">
+            <ul>
+                @foreach (var item2 in Model)
+                {
+                    <li><a href="~/Haberlers/kategorihaber/@item2.Id">@Html.DisplayFor(modelItem => item2.HaberKategori)</a></li>
+                }
+                <a style="color:white;font-weight:900;font-size:20px;" href="/Haberlers/TumHaberler">Tum Haberler</a>
+            </ul>
+        </div>
+    </div>
+</div>

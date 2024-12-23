@@ -1,0 +1,153 @@
+﻿@model IEnumerable<TmBugun.Models.Haber>
+
+@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int i = 1;
+
+}
+
+<div class="card">
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">inbox</i>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <h4 class="card-title left">Haberler</h4>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th>Haber Kategorisi</th>
+                        <th>Yayimci Adi</th>
+                        <th>Haber Basligi</th>
+                        <th>Haber Eklenme Tarihi</th>
+                        <th>Begeni Sayi</th>
+                        <th>Izlenme Sayi</th>
+                        <th class="text-right">Islemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@i</td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Yayimci.Yayimci_ad)
+                            </td>  
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HaberBaslik)
+                            </td>
+                            <td>
+                                @Html.Raw(item.HaberTarih.Date.ToString("dd MMM yyyy"))
+                            </td>  
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HaberBegenmeSayi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HaberIzlenmeSayi)
+                            </td>
+                            <td class="td-actions text-right">
+                                <button type="button" rel="tooltip" title="Haber Detayi" class="btn btn-info btn-round" onclick="location.href='@Url.Action("Details", "Habers", new { id = item.Id })'">
+                                    <i class="material-icons">view_headline</i>
+                                </button>
+                                <button type="button" rel="tooltip" title="Haberi Siliniz" class="btn btn-danger btn-round" onclick="location.href='@Url.Action("Delete", "Habers", new { id = item.Id })'">
+                                    <i class="material-icons">close</i>
+                                </button>
+                      
+                            </td>
+                            @{
+                                i++;
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HaberBlogTip.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HaberKategorileri.HaberKategori)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yayimci.Yayimci_ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HaberBaslik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HaberIcerik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HaberTarih)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HaberIzlenmeSayi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HaberBegenmeSayi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HaberResim)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HaberBlogTip.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yayimci.Yayimci_ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HaberBaslik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HaberIcerik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HaberTarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HaberIzlenmeSayi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HaberBegenmeSayi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HaberResim)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>*@

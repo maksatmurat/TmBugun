@@ -1,0 +1,18 @@
+﻿@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-9">
+        @{ Html.RenderAction("Haberler"); }
+
+    </div>
+    <div class="col-sm-3">
+        @{ Html.RenderAction("Yazarlar"); }
+    </div>
+</div>

@@ -1,0 +1,318 @@
+﻿@model TmBugun.Models.Sport
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+@{
+    int kullaniciID = Convert.ToInt32(ViewData["KullaniciID"]);
+    ViewBag.Title = "SportDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="background-color:#ffd230;">
+    <div class="row" style="margin:0;">
+        <div class="col-12 col-md-10 col-lg-10">
+            <div class="container">
+                @Html.Action("AnaSayfaKategoriler", "sportlars", new { area = "" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" style="padding-top:20px;">
+        <div class="col-12 col-lg-9 col-md-9 col-sm-12">
+
+            <div class="text-black text-sm-left" style="margin-bottom:20px;">
+                <a style="border-bottom:4px solid red;">@Html.DisplayFor(model => model.SportKategorileri.SportKategori)</a>
+            </div>
+
+            <div class="text-black font-weight-bold h5-responsive text-left" style="margin-bottom:20px;">
+                @Html.Raw(Model.SportBaslik)
+            </div>
+
+            <div class="row" style="padding: 10px;">
+                <div class="col-6 col-lg-3 col-md-3 col-sm-4">
+                    <i class="fas fa-clock"></i>
+                    @Html.Raw(Model.SportTarih.ToShortDateString())
+                    @Html.Raw(Model.SportTarih.ToShortTimeString())
+                </div>
+                <div class="col-3 col-lg-2 col-md-2 col-sm-2">
+                    <i class="far fa-thumbs-up"></i>
+                    @Html.Raw(Model.SportBegenmeSayi)
+                </div>
+                <div class="col-3 col-lg-2 col-md-2 col-sm-2">
+                    <i class="fas fa-eye"></i>
+                    @Html.Raw(Model.SportIzlenmeSayi)
+                </div>
+
+                <div class="col-12 offset-md-1 col-lg-4 col-md-3 col-sm-4 text-right">
+                    <i class="fab fa-facebook-f" style="color:#3b5998;margin-left:10px"></i>
+                    <i class="fab fa-twitter" style="color:#1da1f2;margin-left:10px"></i>
+                    <p style="margin:0;"><i class="fas fa-share-alt-square" style="color:#0b8a0b;margin-left:10px"></i>  Share</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Raw("<img style='width:100%; height:400px;' src=\"data:image/jpeg;base64,"
+                        + Convert.ToBase64String(Model.SportResim) + "\" />")
+                </div>
+                <div class="col-md-12">
+                    @Html.Raw(Model.SportIcerik)
+                </div>
+                <div class="col-12">
+                    <div class="text-justify text-left" style="border-bottom:1px solid black;font-size:18px;font-weight:bold;padding:5px 0 5px 0;">
+                        Yazar <a href="" style="color:black">@Html.Raw(Model.Yayimci.Yayimci_ad) @Html.Raw(Model.Yayimci.Yayimci_soyad) </a>
+                    </div>
+                    <div class="text-right">
+                        @if (Session["NormalID"] != null)
+                        {
+                            <button type="button" id="blbengen1" class="btn btn-fb pr-6 pl-6"><i class="fas fa-thumbs-up"></i></button>
+                        }
+                    </div>
+                </div>
+               
+            </div>
+
+            @if (Session["NormalID"] != null)
+            {
+                <div class="col-12">
+                    <form>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <div class="md-form text-left">
+                                        <i class="fas fa-pencil-alt prefix"></i>
+                                        <textarea id="yorum" name="yorum1" class="md-textarea form-control" rows="3"></textarea>
+                                        <label for="yorum">Yorumunuz</label>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button type="button" id="gonder1" class="btn btn-outline-success">Success</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            }
+            else
+            {
+                <h4 class="alert" style="color:red">Yorum Yapmak ve Begenmek Icin  Kayit Olunuz veya Giris Yapiniz</h4>
+            }
+
+            <div class="text-justify">
+                @Html.Action("SportHabereBagliYorumlar", "Sportlars", new { id = Model.Id })
+            </div>
+
+        </div>
+        <div class="col-12 col-lg-3 col-md-3 col-sm-12">
+            @Html.Action("son10sport", "Sportlars")
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer font-small" style="background-color:#4c4c4c">
+
+    <!-- Footer Links -->
+    <div class="container text-md-left" style="padding:0;">
+        <h4 class="text-left" style="padding:20px 0 20px 0;font-family: 'Noto Serif', serif;">TMB ile Kesfet</h4>
+        <!-- Grid row -->
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                <!-- Links -->
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a class="nav-link">Ana Sayfa</a>
+                    </li>
+                    <li>
+                        <a class="nav-link active" href="/haberlers/AnaSayfa">Haberler</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#!">Sportlar</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#!">Kultur</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                <!-- Links -->
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a class="nav-link " href="#!">Yemek</a>
+                    </li>
+                    <li>
+                        <a class="nav-link " href="#!">Canli Yayin</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#!">Diger</a>
+                    </li>
+                    <li>
+                        <a class="nav-link " href="#!">Finans</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                <!-- Links -->
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+            <!-- Grid column -->
+            <div class="col-md-3 col-sm-6" style="border-left:1px solid white">
+
+                <!-- Links -->
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!">Link 1</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 2</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 3</a>
+                    </li>
+                    <li>
+                        <a href="#!">Link 4</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+    <div class="container" style="padding:20px 0 20px 0">
+
+        <!--Grid row-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <h6>Kullanım Şartları</h6>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <a href="/YayimciAdminSayfa/KayitIslemleri/Login">Yazar Girisi</a>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <h6>TMB Hakkinda</h6>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <h6>Gizlilik Politikası</h6>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <h6>TMB ile iletişim kurun</h6>
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-lg-2 col-md-2 col-sm-6">
+                <h6>Cookies</h6>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+
+    </div>
+    <!-- Footer Elements -->
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">
+        © 2018 Copyright:
+        <a href="#"> MaksatMyrat</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<style>
+    .media .avatar {
+        width: 64px;
+    }
+
+    .shadow-textarea textarea.form-control::placeholder {
+        font-weight: 300;
+    }
+
+    .shadow-textarea textarea.form-control {
+        padding-left: 0.8rem;
+    }
+</style>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#gonder1").click(function () {
+            var yorumunuz = $("#yorum1").val();
+            $.ajax({
+                type: 'POST',
+                url: "/Sportlars/YorumYap1",
+                data: { yorum: yorumunuz, kullaniciID:kullaniciID, SportId:@Model.Id },
+                dataType: 'json',
+                success: function (data) {
+                    alert("Yorum Eklendi" + yorumunuz);
+                }
+            });
+        });
+        $("#blbengen1").click(function () {
+            $.ajax({
+                type: 'POST',
+                url: "/Sportlars/BlBegen1",
+                data: { SportId:@Model.Id },
+                dataType: 'json',
+                success: function (data) {
+                    alert("Blogu Begendiniz");
+                }
+            });
+        });
+    }
+</script>
+
+<script type="text/javascript">
+     $(document).ready(function (){
+             $.ajax({
+                 type: 'POST',
+                 url: "/Sportlars/IzlemeArttir",
+                 data: { haberid:@Model.Id },
+                 dataType: 'json'
+             });
+        });
+</script>

@@ -1,0 +1,316 @@
+﻿@model TmBugun.Models.Resimler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Yazar/Views/Shared/_Layout.cshtml";
+}
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v4.0"></script>
+
+
+<div class="col-md-10 col-12 mr-auto ml-auto">
+    <div class="wizard-container">
+        <div class="card card-wizard" data-color="rose" id="wizardProfile">
+            <div class="wizard-navigation">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#Turkmence" data-toggle="tab" role="tab">
+                            Turkmence
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Inglizce" data-toggle="tab" role="tab">
+                            Inglizce
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Rusca" data-toggle="tab" role="tab">
+                            Rusca
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Turkce" data-toggle="tab" role="tab">
+                            Turkce
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body" style="padding-left:0;padding-right:0;">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="Turkmence">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div style="border-bottom:2px solid black"></div>
+                            </div>
+
+                            @Html.Raw("<img class='card-img-top' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                                                   + Convert.ToBase64String(Model.Resim) + "\"  />")
+
+                           
+                            <div class="content" style="padding:2%;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4 class="card-text font-weight-bold" style="padding:10px;">
+                                            @Html.Raw(Model.ResimYazi)
+                                        </h4>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-just-icon btn-facebook btn-sm">
+                                            <i class="fa fa-facebook"></i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-instagram btn-sm">
+                                            <i class="fa fa-instagram"></i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-twitter btn-sm">
+                                            <i class="fa fa-twitter"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-8 col-6">
+                                        <p class="text-muted">Eklenme Tarih</p>
+                                    </div>
+                                    <div class="col-sm-4 ml-auto col-6">
+                                        <p class="text-muted">Begeni Sayi </p>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <span class="material-icons" style="margin-right:5px;">access_time</span>
+                                        <span>  @Html.Raw(Model.ResimEklenmeTarih.ToString("MM/dd/yyyy"))</span>
+                                    </div>
+                                    <div class="col-3 col-sm-8">
+
+                                    </div>
+                                    
+                                    <div class="col-2 col-sm-1" style="padding-left:25px;">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid blue;height:40px;" data-original-title="Haber Begeni Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">thumb_up</i>
+                                                @Html.DisplayFor(model => model.ResimBegSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div style="border-bottom:2px solid black"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card ">
+                                            @{
+                                                int resimlerId = Convert.ToInt32(ViewData["resimlerId"]);
+                                                Html.RenderAction("ResimYorumlari", "Yorumlars", new { id = resimlerId });
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Inglizce">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div style="border-bottom:2px solid black"></div>
+                            </div>
+
+                            @Html.Raw("<img class='card-img-top' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                                                   + Convert.ToBase64String(Model.Resim) + "\"  />")
+
+
+                            <div class="content" style="padding:2%;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4 class="card-text font-weight-bold" style="padding:10px;">
+                                            @Html.Raw(Model.ResimYaziEN)
+                                        </h4>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-just-icon btn-facebook btn-sm">
+                                            <i class="fa fa-facebook"></i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-instagram btn-sm">
+                                            <i class="fa fa-instagram"></i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-twitter btn-sm">
+                                            <i class="fa fa-twitter"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-8 col-6">
+                                        <p class="text-muted">Eklenme Tarih</p>
+                                    </div>
+                                    <div class="col-sm-4 ml-auto col-6">
+                                        <p class="text-muted">Begeni Sayi </p>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <span class="material-icons" style="margin-right:5px;">access_time</span>
+                                        <span>  @Html.Raw(Model.ResimEklenmeTarih.ToString("MM/dd/yyyy"))</span>
+                                    </div>
+                                    <div class="col-3 col-sm-8">
+
+                                    </div>
+
+                                    <div class="col-2 col-sm-1" style="padding-left:25px;">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid blue;height:40px;" data-original-title="Haber Begeni Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">thumb_up</i>
+                                                @Html.DisplayFor(model => model.ResimBegSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div style="border-bottom:2px solid black"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card ">
+                                            @{
+                                                Html.RenderAction("ResimYorumlari", "Yorumlars", new { id = resimlerId });
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Rusca">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div style="border-bottom:2px solid black"></div>
+                            </div>
+
+                            @Html.Raw("<img class='card-img-top' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                                                   + Convert.ToBase64String(Model.Resim) + "\"  />")
+
+
+                            <div class="content" style="padding:2%;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4 class="card-text font-weight-bold" style="padding:10px;">
+                                            @Html.Raw(Model.ResimYaziRU)
+                                        </h4>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-just-icon btn-facebook btn-sm">
+                                            <i class="fa fa-facebook"></i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-instagram btn-sm">
+                                            <i class="fa fa-instagram"></i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-twitter btn-sm">
+                                            <i class="fa fa-twitter"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-8 col-6">
+                                        <p class="text-muted">Eklenme Tarih</p>
+                                    </div>
+                                    <div class="col-sm-4 ml-auto col-6">
+                                        <p class="text-muted">Begeni Sayi </p>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <span class="material-icons" style="margin-right:5px;">access_time</span>
+                                        <span>  @Html.Raw(Model.ResimEklenmeTarih.ToString("MM/dd/yyyy"))</span>
+                                    </div>
+                                    <div class="col-3 col-sm-8">
+
+                                    </div>
+
+                                    <div class="col-2 col-sm-1" style="padding-left:25px;">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid blue;height:40px;" data-original-title="Haber Begeni Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">thumb_up</i>
+                                                @Html.DisplayFor(model => model.ResimBegSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div style="border-bottom:2px solid black"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card ">
+                                            @{
+                                                Html.RenderAction("ResimYorumlari", "Yorumlars", new { id = resimlerId });
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="Turkce">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div style="border-bottom:2px solid black"></div>
+                            </div>
+
+                            @Html.Raw("<img class='card-img-top' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                                                   + Convert.ToBase64String(Model.Resim) + "\"  />")
+
+
+                            <div class="content" style="padding:2%;">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4 class="card-text font-weight-bold" style="padding:10px;">
+                                            @Html.Raw(Model.ResimYaziTR)
+                                        </h4>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button class="btn btn-just-icon btn-facebook btn-sm">
+                                            <i class="fa fa-facebook"></i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-instagram btn-sm">
+                                            <i class="fa fa-instagram"></i>
+                                        </button>
+                                        <button class="btn btn-just-icon btn-twitter btn-sm">
+                                            <i class="fa fa-twitter"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-8 col-6">
+                                        <p class="text-muted">Eklenme Tarih</p>
+                                    </div>
+                                    <div class="col-sm-4 ml-auto col-6">
+                                        <p class="text-muted">Begeni Sayi </p>
+                                    </div>
+                                    <div class="col-5 col-sm-2">
+                                        <span class="material-icons" style="margin-right:5px;">access_time</span>
+                                        <span>  @Html.Raw(Model.ResimEklenmeTarih.ToString("MM/dd/yyyy"))</span>
+                                    </div>
+                                    <div class="col-3 col-sm-8">
+
+                                    </div>
+
+                                    <div class="col-2 col-sm-1" style="padding-left:25px;">
+                                        <button type="button" rel="tooltip" title class="btn btn-primary btn-link btn-sm" style="padding:5px;padding-left:0;padding-right:0;border:2px solid blue;height:40px;" data-original-title="Haber Begeni Sayisi">
+                                            <h5 class="font-weight-bold" style="padding:0 10px">
+                                                <i class="material-icons" style="margin-right:5px;">thumb_up</i>
+                                                @Html.DisplayFor(model => model.ResimBegSayi)
+                                            </h5>
+                                        </button>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div style="border-bottom:2px solid black"></div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="card ">
+                                            @{
+                                                Html.RenderAction("ResimYorumlari", "Yorumlars", new { id = resimlerId });
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

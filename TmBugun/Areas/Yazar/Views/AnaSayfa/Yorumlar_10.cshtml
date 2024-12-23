@@ -1,0 +1,90 @@
+﻿@model IEnumerable<TmBugun.Models.Yorumlar>
+
+<div class="card-header card-header-rose card-header-icon">
+    <div class="card-icon" style="padding-left:10px;">
+        <i class="material-icons">comment</i>
+    </div>
+    <h4 class="card-title">Yorumlar</h4>
+</div>
+<div class="card-body">
+    <ul class="">
+        @foreach (var item in Model)
+        {
+            <li class="card">
+                <div class="card-panel">
+                    <div class="card-heading">
+                        <div class="user" style="padding:10px;">
+                            <div class="user-info">
+                                <div data-toggle="collapse" class="username">
+                                    <span class="badge badge-pill badge-info">
+                                        @if (item.NormalKullanici.kullaniciResim != null)
+                                        {
+                                            @Html.Raw("<img class='card-img-top' style='width:100%;height:100%;' src=\"data:image/jpeg;base64,"
+                                                                                                + Convert.ToBase64String(item.NormalKullanici.kullaniciResim) + "\"  />") }
+                                        else
+                                        {
+                                            <img src="~/Areas/assets/img/faces/card-profile1-square.jpg" class="rounded-circle" style="width:30px;height:30px;" />
+                                        }
+                                        <span style="padding-left:5px;">
+                                            @Html.DisplayFor(modelItem => item.NormalKullanici.KullaniciAd)
+                                        </span>
+                                    </span>
+                                    <span class="badge badge-pill badge-info float-right">
+                                        <i class="material-icons" style="height:20px;width:20px;">update</i><span class="text-sm-left text-black" style="padding-left:5px;padding-top:5px">@Html.Raw(item.YorumTarih.ToShortDateString())</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Yorum)
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="card-footer">
+                        <div class="dropdown">
+                            <button type="button" rel="tooltip" class="btn btn-primary btn-link btn-sm" data-placement="bottom" style="padding:5px;padding-left:0;padding-right:0;border:2px solid red;height:40px;" data-original-title="Haber Izlenme Sayisi">
+                                <h5 class="font-weight-bold" style="padding:0 10px">
+                                    <i class="material-icons" style="margin-right:5px;">thumb_up</i>
+                                    @Html.Raw(item.YorumBegSayi)
+                                </h5>
+                            </button>
+                            <button type="button" rel="tooltip" class="btn btn-primary btn-link btn-sm  delete-row" data-id="@item.Id" data-placement="bottom" style="padding:5px;padding-left:0;padding-right:0;border:2px solid red;height:40px;" @*onclick="location.href='@Url.Action("Delete", "Yorumlars",new {id=item.Id})'"*@ data-original-title="Sil">
+                                <h5 class="font-weight-bold" style="padding:0 10px">
+                                    <i class="material-icons" style="margin-right:5px;">clear</i>
+                                </h5>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>
+
+<script src="~/Areas/assets/js/core/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".delete-row").click(function () {
+            var id = $(this).attr("data-id");
+            //var closestTR = $(this).closest("tr");
+            //var confirmDelete = confirm('ID\'si' + id + ' olan kayıdı silmek istediğinizden emin misiniz?');
+            if (true) {
+                $.ajax({
+                    url: '/Yorumlars/Delete/' + id,
+                    type: 'POST',
+                    success: function (result) {
+                        if (result == true) {
+                            alert("Yorum Silindi");
+                        }
+                        else alert("Silme işlemi sırasında hata oluştu");
+                    }
+                });
+            }
+
+        });
+
+    });
+</script>

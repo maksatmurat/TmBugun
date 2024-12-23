@@ -1,0 +1,102 @@
+﻿@model IEnumerable<TmBugun.Models.SportKategorileri>
+
+@if (Session["AdminID"] == null)
+{
+    Response.Redirect("~/Admin/KayitIslemleri/Login");
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int i = 1;
+}
+
+
+<div class="card">
+    <div class="card-header card-header-rose card-header-icon">
+        <div class="card-icon">
+            <i class="material-icons">list</i>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <h4 class="card-title left">Sport Kategorileri</h4>
+            </div>
+            <div class="col-md-3 col-sm-3 ml-auto">
+                <button type="button" rel="tooltip" title="Kategori Ekle" class="btn btn-info" style="float:right;" onclick="location.href='@Url.Action("Create", "SportKategorileris")'">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th>Logo</th>
+                        <th>Sport Karegori Adi</th>
+                        <th>Bagli Haber Sayisi</th>
+                        <th class="text-right">Islemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center">@i</td>
+                            <td>
+                                <i class="material-icons">
+                                    @Html.DisplayFor(modelItem => item.SportKategoriLogo)
+                                </i>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SportKategori)
+                            </td>
+                            <td>
+                                @{
+                                    int kategoriID = item.Id;
+                                    int bagliHaberSayi = item.Sport.Where(x => x.SportkategoriId == kategoriID).Count();
+                                    <p>@bagliHaberSayi</p>
+                                }
+                            </td>
+                            <td class="td-actions text-right">
+                                @if (@bagliHaberSayi != 0)
+                                {
+                                    <button type="button" rel="tooltip" title="Kategoriye Bagli Haberler" class="btn btn-info btn-round" onclick="location.href='@Url.Action("Details", "SportKategorileris", new { id = item.Id })'">
+                                        <i class="material-icons">view_headline</i>
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="button" rel="tooltip" title="Bagli Haber yok" class="btn btn-info btn-round" onclick="#">
+                                        <i class="material-icons">view_headline</i>
+                                    </button>
+                                }
+
+                                <button type="button" rel="tooltip" title="Duzenle" class="btn btn-success btn-round" onclick="location.href='@Url.Action("Edit", "SportKategorileris", new { id = item.Id })'">
+                                    <i class="material-icons">edit</i>
+                                </button>
+                                @if (@bagliHaberSayi == 0)
+                                {
+                                    <button type="button" rel="tooltip" title="Kategoriyi Siliniz" class="btn btn-danger btn-round" onclick="location.href='@Url.Action("Delete", "SportKategorileris", new { id = item.Id })'">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="button" rel="tooltip" title="Kategoriyi Silmeden Bagli Haberleri Siliniz" class="btn btn-danger btn-round" onclick="location.href='@Url.Action("Details", "SportKategorileris", new { id = item.Id })'">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                }
+                            </td>
+                            @{
+                                i++;
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

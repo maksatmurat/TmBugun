@@ -1,0 +1,29 @@
+﻿@model IEnumerable<TmBugun.Models.Haber>
+
+@{
+    int i = 0;
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th class="font-weight-bold">Son eklenen 2 Haber Basligi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="~/Admin/Habers/Details/@item.Id" style="color:black"> @Html.DisplayFor(modelItem => item.HaberBaslik)</a>
+                </td>
+            </tr>
+
+            i++;
+        }
+    </tbody>
+</table>
+@if (i == 0)
+{
+    <span> Bu yazar daha haber eklemedi</span>
+}

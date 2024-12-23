@@ -1,0 +1,151 @@
+﻿@model IEnumerable<TmBugun.Models.Haber>
+
+    <div class="row">
+        <div class="col-12 col-lg-4 col-md-4 col-sm-12">
+            <div class="card " >
+                <div style="border-bottom:3px solid black">
+                    @foreach (var item in ViewData["Kategori1EnFazla"] as IList<TmBugun.Models.Haber>)
+                    {
+                        <h3 style="font-weight:bold;margin-bottom:15px;color:#796565;padding-left:10%">
+                            @item.HaberKategorileri.HaberKategori
+                        </h3>
+                        @Html.Raw("<img style='width:100%; height:30%;' src=\"data:image/jpeg;base64,"
+                                                       + Convert.ToBase64String(item.HaberResim) + "\" />")
+                        <div class="text-white text-md-left d-flex align-items-start " style="padding:15px;padding-top:10%">
+                            <div>
+                                <h3 class="card-title pt-2" style="font-size:16px;color:black">
+                                    <a href="/Haberlers/HaberDetay/@item.Id" style="color:black"> <strong>@Html.Raw(item.HaberBaslik.ToString().Substring(0, (item.HaberBaslik.Length > 100) ? 100 : item.HaberBaslik.Length))</strong></a>
+                                </h3>
+                                <h6 class="text-black" style="color:black">
+                                    | @Html.Raw(item.HaberKategorileri.HaberKategori)
+                                </h6>
+                            </div>
+                        </div>
+                    }
+                </div>
+                @foreach (var item in ViewData["kategori1"] as IList<TmBugun.Models.Haber>)
+                {
+                    <div class="row">
+                        <div class="col-4" style="padding:5%;">
+                            @Html.Raw("<img style='width:100%; height:100%;' src=\"data:image/jpeg;base64,"
+                                                            + Convert.ToBase64String(item.HaberResim) + "\" />")
+                        </div>
+                        <div class="col-8" style="padding:5px">
+                            <div class="text-black" style="margin:5px;">
+                                <div class="text-body font-small">
+                                    <p style="font-weight:bold;margin:5px;font-size:14px">
+                                        <a href="~/Haberlers/HaberDetay/@item.Id" style="color:black">
+                                            @Html.Raw(item.HaberBaslik.ToString().Substring(0, (item.HaberBaslik.Length > 100) ? 100 : item.HaberBaslik.Length))
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="page-footer" style="font-size:14px;">
+                                    @Html.Raw(item.HaberTarih.TimeOfDay.Hours):@Html.Raw(item.HaberTarih.TimeOfDay.Minutes)
+                                    |
+                                    @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-4 col-sm-12">
+            <div class="card ">
+                <div style="border-bottom:3px solid black">
+                    @foreach (var item in ViewData["Kategori2EnFazla"] as IList<TmBugun.Models.Haber>)
+                    {
+                        <h3 style="font-weight:bold;margin-bottom:15px;color:#796565;padding-left:10%">
+                            @item.HaberKategorileri.HaberKategori
+                        </h3>
+                        @Html.Raw("<img style='width:100%; height:30%;' src=\"data:image/jpeg;base64,"
+                                                       + Convert.ToBase64String(item.HaberResim) + "\" />")
+                        <div class="text-white text-md-left d-flex align-items-start " style="padding:15px;padding-top:10%">
+                            <div>
+                                <h3 class="card-title pt-2" style="font-size:16px;color:black">
+                                    <a href="/Haberlers/HaberDetay/@item.Id" style="color:black"> <strong>@Html.Raw(item.HaberBaslik.ToString().Substring(0, (item.HaberBaslik.Length > 100) ? 100 : item.HaberBaslik.Length))</strong></a>
+                                </h3>
+                                <h6 class="text-black" style="color:black">
+                                    | @Html.Raw(item.HaberKategorileri.HaberKategori)
+                                </h6>
+                            </div>
+                        </div>
+                    }
+                </div>
+                @foreach (var item in ViewData["kategori2"] as IList<TmBugun.Models.Haber>)
+                {
+                    <div class="row">
+                        <div class="col-4" style="padding:5%;">
+                            @Html.Raw("<img style='width:100%; height:100%;' src=\"data:image/jpeg;base64,"
+                                                            + Convert.ToBase64String(item.HaberResim) + "\" />")
+                        </div>
+                        <div class="col-8" style="padding:5px">
+                            <div class="text-black" style="margin:5px;">
+                                <div class="text-body font-small">
+                                    <p style="font-weight:bold;margin:5px;font-size:14px">
+                                        <a href="~/Haberlers/HaberDetay/@item.Id" style="color:black">
+                                            @Html.Raw(item.HaberBaslik.ToString().Substring(0, (item.HaberBaslik.Length > 100) ? 100 : item.HaberBaslik.Length))
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="page-footer" style="font-size:14px;">
+                                    @Html.Raw(item.HaberTarih.TimeOfDay.Hours):@Html.Raw(item.HaberTarih.TimeOfDay.Minutes)
+                                    |
+                                    @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 col-md-4 col-sm-12">
+            <div class="card ">
+                <div style="border-bottom:3px solid black">
+                    @foreach (var item in ViewData["Kategori3EnFazla"] as IList<TmBugun.Models.Haber>)
+                    {
+                        <h3 style="font-weight:bold;margin-bottom:15px;color:#796565;padding-left:10%">
+                            @item.HaberKategorileri.HaberKategori
+                        </h3>
+                        @Html.Raw("<img style='width:100%; height:30%;' src=\"data:image/jpeg;base64,"
+                                                       + Convert.ToBase64String(item.HaberResim) + "\" />")
+                        <div class="text-white text-md-left d-flex align-items-start " style="padding:15px;padding-top:10%">
+                            <div>
+                                <h3 class="card-title pt-2" style="font-size:16px;color:black">
+                                    <a href="/Haberlers/HaberDetay/@item.Id" style="color:black"> <strong>@Html.Raw(item.HaberBaslik.ToString().Substring(0, (item.HaberBaslik.Length > 100) ? 100 : item.HaberBaslik.Length))</strong></a>
+                                </h3>
+                                <h6 class="text-black" style="color:black">
+                                    | @Html.Raw(item.HaberKategorileri.HaberKategori)
+                                </h6>
+                            </div>
+                        </div>
+                    }
+                </div>
+                @foreach (var item in ViewData["kategori3"] as IList<TmBugun.Models.Haber>)
+                {
+                    <div class="row">
+                        <div class="col-4" style="padding:5%;">
+                            @Html.Raw("<img style='width:100%; height:100%;' src=\"data:image/jpeg;base64,"
+                                                            + Convert.ToBase64String(item.HaberResim) + "\" />")
+                        </div>
+                        <div class="col-8" style="padding:5px">
+                            <div class="text-black" style="margin:5px;">
+                                <div class="text-body font-small">
+                                    <p style="font-weight:bold;margin:5px;font-size:14px">
+                                        <a href="~/Haberlers/HaberDetay/@item.Id" style="color:black">
+                                            @Html.Raw(item.HaberBaslik.ToString().Substring(0, (item.HaberBaslik.Length > 100) ? 100 : item.HaberBaslik.Length))
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="page-footer" style="font-size:14px;">
+                                    @Html.Raw(item.HaberTarih.TimeOfDay.Hours):@Html.Raw(item.HaberTarih.TimeOfDay.Minutes)
+                                    |
+                                    @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div> 
+    </div>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TmBugun.Models.Resimler>
+
+
+@foreach (var item in Model)
+{
+    <div class="col-md-6" style="padding:10px;">
+        <div class="card card-cascade wider">
+
+            <!-- Card image -->
+            <div class="view view-cascade overlay">
+                @Html.Raw("<img class='card-img-top' style='width:100%;height:300px;' src=\"data:image/jpeg;base64,"
+                                                       + Convert.ToBase64String(item.Resim) + "\"  />")
+                <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+
+            <!-- Card content -->
+            <div class="card-body card-body-cascade text-center pb-0">
+
+                <p class="card-text black-text text-left" style="font-weight:bold">
+                        @Html.Raw(item.ResimYazi.Substring(0,200))
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+
+}
+

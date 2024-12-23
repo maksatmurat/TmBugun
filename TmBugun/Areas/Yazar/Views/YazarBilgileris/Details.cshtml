@@ -1,0 +1,46 @@
+﻿@model TmBugun.Models.Yayimci
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Yazar/Views/Shared/_Layout.cshtml";
+    int Yazarid;
+    Yazarid = Model.Id;
+}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                @{Html.RenderAction("Edit", "YazarBilgileris", new { id = Model.Id });}
+            </div>
+
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        @if (Model.YayimciResim != null)
+                        {
+                            @Html.Raw("<img style='width:100; height:100;' src=\"data:image/jpeg;base64,"
+                             + Convert.ToBase64String(Model.YayimciResim) + "\" />")
+                        }
+                        else if (Model.YayimciResim == null)
+                        {
+                            <img class="img" width="100"height="100" src="~/Areas/assets/img/faces/writingclub.png" />
+                        }
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-category text-gray">Yazar </h6>
+                        <h4 class="card-title">
+                            @Html.DisplayFor(model => model.Yayimci_ad)
+                            @Html.DisplayFor(model => model.Yayimci_soyad)
+                        </h4>
+              
+                        <a class="btn btn-twitter" href="@Model.YayimciTwitter"target="_blank">
+                            <i class="fa fa-twitter"></i> Twitter
+                        </a> 
+                        <a class="btn btn-facebook" href="@Model.YayimciFacebook" target="_blank">
+                            <i class="fa fa-facebook-square"></i> Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

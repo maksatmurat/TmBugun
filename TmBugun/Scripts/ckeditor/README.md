@@ -1,82 +1,152 @@
-CKEditor 4 - Releases
-=====================
+# CKEditor 4 LTS - Smart WYSIWYG HTML editor [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Check%20out%20CKEditor%204%20on%20GitHub&url=https%3A%2F%2Fgithub.com%2Fckeditor%2Fckeditor4)
 
-## Releases Code
+[![npm version](https://badge.fury.io/js/ckeditor4.svg)](https://www.npmjs.com/package/ckeditor4)
+[![GitHub tag](https://img.shields.io/github/v/tag/ckeditor/ckeditor4.svg)](https://github.com/ckeditor/ckeditor4-releases)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/ckeditor/ckeditor4/tree/master.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/ckeditor/ckeditor4/tree/master)
 
-This repository contains the official release versions of [CKEditor 4](https://ckeditor.com/ckeditor-4/).
+[![Join newsletter](https://img.shields.io/badge/join-newsletter-00cc99.svg)](http://eepurl.com/c3zRPr)
+[![Follow Twitter](https://img.shields.io/badge/follow-twitter-00cc99.svg)](https://twitter.com/ckeditor)
 
-There are four versions for each release &mdash; `standard-all`, `basic`, `standard`, and `full`.
-They differ in the number of plugins that are compiled into the main `ckeditor.js` file as well as the toolbar configuration.
+## ⚠️ CKEditor 4: End of Life and Extended Support Model until Dec 2028
 
-See the [comparison](https://ckeditor.com/cke4/presets) of the `basic`, `standard`, and `full` installation presets for more details.
+CKEditor 4 was launched in 2012 and reached its End of Life (EOL) on June 30, 2023.
 
-The `standard-all` build includes all official CKSource plugins with only those from the `standard` installation preset compiled into the `ckeditor.js` file and enabled in the configuration.
+A special edition, **[CKEditor 4 LTS](https://ckeditor.com/ckeditor-4-support/)** ("Long Term Support"), is available under commercial terms (["Extended Support Model"](https://ckeditor.com/ckeditor-4-support/)) for anyone looking to **extend the coverage of security updates and critical bug fixes**.
 
-All versions available in this repository were built using [CKBuilder](https://ckeditor.com/cke4/builder), so they are optimized and ready to be used in a production environment.
+With CKEditor 4 LTS, security updates and critical bug fixes are guaranteed until December 2028.
 
-## Documentation
+## About this package
 
-Developer documentation for CKEditor is available online at: <https://ckeditor.com/docs/>.
+### CKEditor 4 LTS
 
-## Installation
+After June 30, 2023 the `master` version of the [LICENSE.md](https://github.com/ckeditor/ckeditor4/blob/master/LICENSE.md) file changed to reflect the license of CKEditor 4 LTS available under the Extended Support Model.
 
-### Git clone
+All future versions of CKEditor 4 (4.23.0-lts and above) are released as CKEditor 4 LTS distributions and require a license key.
 
-To install one of the available releases, just clone this repository and switch to the respective branch (see next section):
+The CKEditor 4 Nuget packages are tagged as 4.23.* without the `-lts` suffix, to keep it consistent with NPM versioning guidelines. Note that the version 4.23.0 and above are the LTS versions of the editor.
 
-	git clone -b <release branch> git://github.com/ckeditor/ckeditor4-releases.git
+### Getting CKEditor 4 (Open Source)
 
-### Git submodule
+You may continue using CKEditor 4.22.* and below under the open source license terms. Please note, however, that the open source version no longer comes with any security updates, so your application will be at risk.
 
-If you are using git for your project and you want to integrate CKEditor, we recommend to add this repository as a
-[submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules).
+In order to install the open source version of CKEditor 4, use ****versions 4.22.1 and below****. CKEditor 4.22.1 was the last version of CKEditor 4 available under the open source license terms.
 
-	git submodule add -b <release branch> git://github.com/ckeditor/ckeditor-releases.git <clone dir>
-	git commit -m "Added CKEditor submodule in <clone dir> directory."
+## Summary of options after the CKEditor 4 End of Life
 
-### Using Package Managers
+### Upgrading to CKEditor 5
 
-See the [Installing CKEditor with Package Managers](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_package_managers.html) article for more details about installing CKEditor with [Bower](https://bower.io), [Composer](https://getcomposer.org/) and [npm](https://www.npmjs.com/).
+CKEditor 5 is a great new editor with [lots of exciting features](https://ckeditor.com/docs/ckeditor5/latest/features/index.html).
 
-## Repository Structure
+Before upgrading, please be aware of the following changes:
 
-### Branches
+- CKEditor 5 is a completely new editor. **Upgrading is not as simple as replacing the folder with "ckeditor"** - read more in the [Migration from CKEditor 4](https://ckeditor.com/docs/ckeditor5/latest/updating/ckeditor4/migration-from-ckeditor-4.html) guide.
+- CKEditor 5 is available only under the GPL copyleft license (or under a commercial license).
+- Open source projects with a GPL-incompatible license may apply for a license under the [Free for Open Source](https://ckeditor.com/wysiwyg-editor-open-source/) program.
 
-This repository contains the following branches:
+### Using an outdated, unsupported version
 
-  - `master` and `latest` &ndash; the latest release of the `standard-all` preset (including betas).
-  - `stable` &ndash; the latest stable release of the `standard-all` preset (non-beta).
-  - `A.B.x` (e.g. `4.3.x`) &ndash; the latest release of the `standard-all` preset in the `A.B` branch.
-  - `(basic|standard|full)/stable` &ndash; the latest stable release tag point (non-beta).
-  - `(basic|standard|full)/latest` &ndash; the latest release tag point (including betas).
-  - `(basic|standard|full)/A.B.x` (e.g. `basic/4.0.x`) &ndash; the latest releases in the `A.B` branch.
+You may continue using CKEditor 4.22.* (or below). The license terms of the older CKEditor 4 versions have not changed. However, please note that by using software that is no longer maintained, you are introducing a **security risk to your application**.
 
-### Tags
+### Signing an "Extended Support Model" contract
 
-**Since version 4.3.3** this repository uses the following tag naming rules:
+If you are not ready to replace CKEditor 4 in your application yet, you may continue using CKEditor 4 until December 2028.
+CKEditor 4 LTS, available under the "[Extended Support Model](https://ckeditor.com/ckeditor-4-support/)", will ship all important security updates and critical bug fixes, providing an interrupted editing experience for your end users. Please note that this version of CKEditor 4 is available only under a special agreement and requires a license key.
 
-  - `x.y.z` &ndash; contains the `standard-all` editor build, e.g. `4.3.3`, `4.4.0` etc.
-  - `(basic|standard|full)/x.y.z` &ndash; contains the editor build with a given preset, e.g. `basic/4.3.3`.
+## About CKEditor 4
 
-The version numbers follow the [Semantic Versioning 2.0.0](http://semver.org/) scheme.
+A highly configurable WYSIWYG HTML editor with hundreds of features, from creating rich text content with captioned images, videos, tables, media embeds, emoji, or mentions to pasting from Word and Google Docs and drag&drop image upload.
 
-Up to version **4.3.2** the tags were released in the following form `x.y[.z]/(basic|standard|full)`.
-For example: `4.0/basic`, `4.0.1/standard`. This convention was changed in CKEditor 4.3.3 to conform to the Semantic Versioning scheme.
+It supports a broad range of browsers, including legacy ones.
 
-## Checking Your Installation
+![CKEditor 4 screenshot](https://raw.githubusercontent.com/ckeditor/ckeditor4-releases/master/.npm/assets/ckeditor4.png)
 
-The editor comes with a few sample pages that can be used to verify if the installation succeeded. Take a look at the `samples` directory.
+## Getting started
 
-To test your installation, just call the following page for your website:
+### Using [Nuget package](https://www.nuget.org/packages/ckeditor-standard)
 
-	http://<your site>/<CKEditor installation path>/samples/index.html
+```bash
+nuget install ckeditor4-standard
+```
 
-For example:
+Instead of the standard preset, you can use any of the [supported presets](#presets).
 
-	http://www.example.com/ckeditor/samples/index.html
+Use it on your website:
 
-### License
+```html
+<div id="editor">
+    <p>This is the editor content.</p>
+</div>
+<script src="./ckeditor-standard.<version>/content/Scripts/ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'editor' );
+</script>
+```
 
-Licensed under the GPL, LGPL, and MPL licenses, at your choice.
+You can also load CKEditor 4 using [CDN](https://cdn.ckeditor.com/#ckeditor4).
 
-Please check the `LICENSE.md` file for more information about the license.
+#### CKEditor 4 LTS
+
+If you acquired the [Extended Support Model](https://ckeditor.com/ckeditor-4-support/) for CKEditor 4 LTS, please read [the CKEditor 4 LTS key activation guide.](https://ckeditor.com/docs/ckeditor4/latest/support/licensing/license-key-and-activation.html)
+
+In order to activate CKEditor 4 LTS, add `licenseKey` configure the editor with a valid license key:
+
+```html
+<script>
+    CKEDITOR.replace( 'editor', {
+        licenseKey: 'your license key'
+    } );
+</script>
+```
+
+## Features
+
+* Over 500 plugins in the [Add-ons Repository](https://ckeditor.com/cke4/addons).
+* Pasting from Microsoft Word, Excel, and Google Docs.
+* Drag&drop image uploads.
+* Media embeds to insert videos, tweets, maps, or slideshows.
+* Powerful clipboard integration.
+* Content quality control with Advanced Content Filter.
+* Extensible widget system.
+* Custom table selection.
+* Accessibility conforming to WCAG and Section 508.
+* Over 70 localizations available with full RTL support.
+
+## Presets
+
+The CKEditor 4 Nuget packages come in [`basic`](https://www.nuget.org/packages/ckeditor-basic), [`full`](https://www.nuget.org/packages/ckeditor-full), [`standard`](https://www.nuget.org/packages/ckeditor-standard) and [`standard-all`](https://www.nuget.org/packages/ckeditor-standard-all) presets, so they differ on which of official CKEditor plugins are included in each other. You can check differences between presets in the [official documentation](https://ckeditor.com/cke4/presets-all).
+
+## Further Resources
+
+* [CKEditor 4 demo](https://ckeditor.com/ckeditor-4/)
+* [Documentation](https://ckeditor.com/docs/ckeditor4/latest/)
+* [API documentation](https://ckeditor.com/docs/ckeditor4/latest/api/index.html)
+* [Configuration reference](https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html)
+* [CKEditor SDK with more samples](https://sdk.ckeditor.com/)
+
+If you are looking for CKEditor 5, here's a link to the relevant npm package: <https://www.npmjs.com/package/ckeditor5>
+
+## Browser support
+
+| [![IE / Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png)](http://godban.github.io/browsers-support-badges/) IE / Edge | [![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png)](http://godban.github.io/browsers-support-badges/) Firefox | [![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png)](http://godban.github.io/browsers-support-badges/) Chrome | [![Chrome (Android)](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png)](http://godban.github.io/browsers-support-badges/) Chrome (Android) | [![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)](http://godban.github.io/browsers-support-badges/) Safari | [![iOS Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png)](http://godban.github.io/browsers-support-badges/) iOS Safari | [![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png)](http://godban.github.io/browsers-support-badges/) Opera |
+| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| IE8, IE9, IE10, IE11, Edge | latest version | latest version | latest version | latest version | latest version | latest version |
+
+Find out more in the [Browser Compatibility guide](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_browsers.html#officially-supported-browsers).
+
+## License
+
+Copyright (c) 2003-2023, CKSource Holding sp. z o.o. All rights reserved.
+
+For licensing, see LICENSE.md or [https://ckeditor.com/legal/ckeditor-oss-license](https://ckeditor.com/legal/ckeditor-oss-license)
+
+### CKEditor 4.22.* and below
+
+CKEditor 4 until version 4.22.* was licensed under the terms of any of the following licenses of your choice:
+
+ - GNU General Public License Version 2 or later.
+ - GNU Lesser General Public License Version 2.1 or later.
+ - Mozilla Public License Version 1.1 or later.
+
+### CKEditor 4.23.0-lts and above
+
+CKEditor 4 LTS (starting from version 4.23.0-lts) is available under a commercial license only.

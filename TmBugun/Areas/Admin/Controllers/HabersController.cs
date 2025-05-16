@@ -17,8 +17,8 @@ namespace TmBugun.Areas.Admin.Controllers
         // GET: Admin/Habers
         public ActionResult Index()
         {
-            var haber = db.Haber.Include(h => h.HaberBlogTip).Include(h => h.HaberKategorileri).Include(h => h.Yayimci);
-            return View(haber.ToList());
+            var haber = db.Haber.Include(h => h.HaberKategorileri).Include(h => h.Yayimci).ToList();
+            return View(haber);
         }
 
         // GET: Admin/Habers/Details/5

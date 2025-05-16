@@ -1,58 +1,61 @@
 ﻿@model IEnumerable<TmBugun.Models.IletisimBilgileri>
 
 
-
-@foreach (var item in Model)
+@if (Model is not null)
 {
-    <div class="col-md-3 col-sm-12" style="margin-top:10px;">
-        <div class="row">
-            <div class="col-4 col-md-4 col-sm-4" style="padding:2%;">
-                <button type="button" class="btn btn-md btn-fb" onclick=" window.open('@item.Facebook', '_blank'); return false;" style="width:95%"><i class="fab fa-facebook pr-1" style="font-size:20px"></i></button>
-            </div>
-            <div class="col-4 col-md-4 col-sm-4" style="padding:2%;">
-                <button type="button" class="btn btn-md btn-tw" onclick=" window.open('@item.Twitter', '_blank'); return false;" style="width:95%"><i class="fab fa-twitter-square pr-1" style="font-size:20px"></i>
-                </button>
-            </div>
-            <div class="col-4 col-md-4 col-sm-4" style="padding:2%;">
-                <button type="button" class="btn btn-md btn-ins" onclick=" window.open('@item.Instagram', '_blank'); return false;" style="width:95%"><i class="fab fa-instagram pr-1" style="font-size:20px"></i> </button>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="row">
-            <div class="col-12">
-                <p style="font-size:25px;font-weight:bold;">
-                    <i class="fas fa-envelope-open"></i> | Haber <i class="text-muted">Gundelik</i>
-                </p>
-            </div>
-            <div class="col-12">
-                <a href="/Login/login" ><p style="color:black">Gundelik habarlar icin TMB Kayit olun ve her sabah yeni haberlerlerden haberiniz olsun </p></a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="row">
-            <div class="col-12">
-                <p style="font-size:25px;font-weight:bold;">
-                    <i class="fas fa-mobile-alt"></i>  <i class="fas fa-tablet-alt"></i>  | Haber <i class="text-muted" style="font-size:20px;">Uygulamasi</i>
-                </p>
-            </div>
-            <div class="col-12">
-                <a class="text-muted"><p>Haberlerimizi istediginiz uygulamadan okuyun ve izleyin </p></a>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="row">
-            <div class="col-12">
-                <p style="font-size:25px;font-weight:bold;">
-                    <i class="fas fa-question"></i> | Bize <i class="text-muted" style="font-size:20px;">Sorag Soran</i>
-                </p>
-            </div>
-            <div class="col-12">
-                <p style="font-size:14px;">Bizim email <a style="font-weight:bold;color:white" class="btn-email">@item.Eposta</a></p>
-            </div>
-        </div>
-    </div>
-}
 
+    foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-12" style="margin-top:10px;">
+            <div class="row">
+                <div class="col-4 col-md-4 col-sm-4" style="padding:2%;">
+                    <button type="button" class="btn btn-md btn-fb" onclick=" window.open('@item.Facebook', '_blank'); return false;" style="width:95%"><i class="fab fa-facebook pr-1" style="font-size:20px"></i></button>
+                </div>
+                <div class="col-4 col-md-4 col-sm-4" style="padding:2%;">
+                    <button type="button" class="btn btn-md btn-tw" onclick=" window.open('@item.Twitter', '_blank'); return false;" style="width:95%">
+                        <i class="fab fa-twitter-square pr-1" style="font-size:20px"></i>
+                    </button>
+                </div>
+                <div class="col-4 col-md-4 col-sm-4" style="padding:2%;">
+                    <button type="button" class="btn btn-md btn-ins" onclick=" window.open('@item.Instagram', '_blank'); return false;" style="width:95%"><i class="fab fa-instagram pr-1" style="font-size:20px"></i> </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-12">
+                    <p style="font-size:25px;font-weight:bold;">
+                        <i class="fas fa-envelope-open"></i> | Haber <i class="text-muted">Gundelik</i>
+                    </p>
+                </div>
+                <div class="col-12">
+                    <a href="/Login/login"><p style="color:black">Gundelik habarlar icin TMB Kayit olun ve her sabah yeni haberlerlerden haberiniz olsun </p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-12">
+                    <p style="font-size:25px;font-weight:bold;">
+                        <i class="fas fa-mobile-alt"></i>  <i class="fas fa-tablet-alt"></i>  | Haber <i class="text-muted" style="font-size:20px;">Uygulamasi</i>
+                    </p>
+                </div>
+                <div class="col-12">
+                    <a class="text-muted"><p>Haberlerimizi istediginiz uygulamadan okuyun ve izleyin </p></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="col-12">
+                    <p style="font-size:25px;font-weight:bold;">
+                        <i class="fas fa-question"></i> | Bize <i class="text-muted" style="font-size:20px;">Sorag Soran</i>
+                    </p>
+                </div>
+                <div class="col-12">
+                    <p style="font-size:14px;">Bizim email <a style="font-weight:bold;color:white" class="btn-email">@item.Eposta</a></p>
+                </div>
+            </div>
+        </div>
+    }
+}

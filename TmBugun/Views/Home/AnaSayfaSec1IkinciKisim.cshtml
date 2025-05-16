@@ -1,34 +1,38 @@
 ﻿@model IEnumerable<TmBugun.Models.Haber>
 
 <div class="row">
-    @foreach (var item in Model)
+    @if (Model is not null)
     {
 
-        var base64 = Convert.ToBase64String(item.HaberResim);
-        string imgsrc = String.Format("data:image/jpeg;base64,{0}", base64);
-    <div class="col-md-6" style="margin:0;padding:1%;">
-        <a href="/Haberlers/HaberDetay/@item.Id" style="color:white">
+        foreach (var item in Model)
+        {
 
-            <div class="card card-image view overlay img-fluid" style="background-image: url(@imgsrc)">
-                <div>
-                    <!-- Content -->
-                    <div class="mask waves-effect waves-light rgba-white-slight"></div>
+            var base64 = Convert.ToBase64String(item.HaberResim);
+            string imgsrc = String.Format("data:image/jpeg;base64,{0}", base64);
+            <div class="col-md-6" style="margin:0;padding:1%;">
+                <a href="/Haberlers/HaberDetay/@item.Id" style="color:white">
 
-                    <div class="text-white text-md-left  align-items-start resimUzeriYazi" style="padding:10px;">
+                    <div class="card card-image view overlay img-fluid" style="background-image: url(@imgsrc)">
                         <div>
-                            <a href="/Haberlers/HaberDetay/@item.Id" style="color:white;">
-                                <h3 class="card-title pt-2" style="padding:1px;font-size:18px;">
-                                    <strong>@Html.Raw(item.HaberBaslik.Substring(0,100))</strong>
-                                </h3>
-                                <h6 class="white-text" style="padding:1px;font-size:18px;">
-                                    | @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
-                                </h6>
-                            </a>
+                            <!-- Content -->
+                            <div class="mask waves-effect waves-light rgba-white-slight"></div>
+
+                            <div class="text-white text-md-left  align-items-start resimUzeriYazi" style="padding:10px;">
+                                <div>
+                                    <a href="/Haberlers/HaberDetay/@item.Id" style="color:white;">
+                                        <h3 class="card-title pt-2" style="padding:1px;font-size:18px;">
+                                            <strong>@Html.Raw(item.HaberBaslik)</strong>
+                                        </h3>
+                                        <h6 class="white-text" style="padding:1px;font-size:18px;">
+                                            | @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)
+                                        </h6>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
-            </a>
-    </div>
-     }
+        }
+    }
 </div>

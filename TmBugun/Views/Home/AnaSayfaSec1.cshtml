@@ -19,7 +19,7 @@
                                 <strong>@Html.Raw(item.HaberBaslik)</strong>
                             </h3>
                             <p style="font-size:14px;">
-                                @Html.Raw(item.HaberIcerik.ToString())
+                                @Html.Raw(item.HaberIcerik.ToString().Substring(0,50))
                             </p>
                             <h6 class="white-text">
                                 | @Html.DisplayFor(modelItem => item.HaberKategorileri.HaberKategori)

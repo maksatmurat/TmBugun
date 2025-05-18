@@ -22,15 +22,8 @@ namespace TmBugun.Models
     public partial class TmBugunDB : DbContext
     {
 
-        //static private string dbpath;
-        //static TmBugunDB()
-        //{
-        //    var exeDir = AppDomain.CurrentDomain.BaseDirectory;
-        //    var exeDirInfo = new DirectoryInfo(exeDir);
-        //    var projectDir = exeDirInfo.Parent.Parent.FullName;
-        //    dbpath = $@"{projectDir}\Database\TmBugunDB.db";
-        //}
-        public TmBugunDB() : base("DefaultConnection")
+
+        public TmBugunDB() : base("name=DefaultConnection")
             {
             }
 

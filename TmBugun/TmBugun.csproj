@@ -2496,9 +2496,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202505160922510_first.cs" />
-    <Compile Include="Migrations\202505160922510_first.Designer.cs">
-      <DependentUpon>202505160922510_first.cs</DependentUpon>
+    <Compile Include="Migrations\202505181031258_first.cs" />
+    <Compile Include="Migrations\202505181031258_first.Designer.cs">
+      <DependentUpon>202505181031258_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminBilgileri.cs" />
@@ -2636,8 +2636,8 @@
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202505160922510_first.resx">
-      <DependentUpon>202505160922510_first.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202505181031258_first.resx">
+      <DependentUpon>202505181031258_first.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
